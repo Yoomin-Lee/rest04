@@ -5,9 +5,13 @@ import ScrollToTop from './components/ScrollToTop'
 import ScrollToTopButton from './components/ScrollToTopButton'
 
 import Home from './pages/Home'
-import Business from './pages/Business'
-import Sustainability from './pages/Sustainability'
+import Videos from './pages/Videos'
 import About from './pages/About'
+import Contact from './pages/Contact'
+import Instructors from './pages/Instructors'
+import Partnership from './pages/Partnership'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 import SimplePage from './pages/SimplePage'
 
 export default function App() {
@@ -19,28 +23,25 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
+          {/* 교육 콘텐츠 */}
+          <Route path="/videos" element={<Navigate to="/videos/ai" replace />} />
+          <Route path="/videos/:category" element={<Videos />} />
+
           {/* 회사소개 */}
           <Route path="/about" element={<Navigate to="/about/greetings" replace />} />
           <Route path="/about/:tab" element={<About />} />
 
-          {/* 사업소개 — :category 로 탭 전환 */}
-          <Route path="/business" element={<Navigate to="/business/housing" replace />} />
-          <Route path="/business/:category" element={<Business />} />
+          {/* 문의하기 */}
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/:type" element={<Contact />} />
 
-          {/* 지속가능경영 */}
-          <Route
-            path="/sustainability"
-            element={<Navigate to="/sustainability/ethical" replace />}
-          />
-          <Route path="/sustainability/:tab" element={<Sustainability />} />
+          {/* 강사·파트너십 */}
+          <Route path="/instructors" element={<Instructors />} />
+          <Route path="/partnership" element={<Partnership />} />
 
-          {/* 기타 단순 페이지 */}
-          <Route path="/investment" element={<SimplePage title="투자정보" />} />
-          <Route path="/support" element={<SimplePage title="고객센터" />} />
-          <Route path="/recruit" element={<SimplePage title="인재채용" />} />
-          <Route path="/report" element={<SimplePage title="제보센터" />} />
-          <Route path="/legal" element={<SimplePage title="법적고지" />} />
-          <Route path="/privacy" element={<SimplePage title="개인정보처리방침" />} />
+          {/* 정책 */}
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
 
           <Route path="*" element={<SimplePage title="페이지를 찾을 수 없습니다" />} />
         </Routes>
