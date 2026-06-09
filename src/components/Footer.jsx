@@ -1,95 +1,112 @@
 import { Link } from 'react-router-dom'
 import { company } from '../data/site'
-import Placeholder from './Placeholder'
 
-// ============================================================
-// 푸터 — 상단: 로고 + 회사 소개문 / 하단: 주소·Family site·정책링크
-// ============================================================
 export default function Footer() {
   return (
-    <footer className="relative">
-      {/* 상단 소개 영역 */}
-      <div className="mx-auto max-w-container px-4 py-20 md:px-10 lg:px-40">
-        <div className="flex flex-col items-start gap-8 md:flex-row md:items-center">
-          <div className="w-56 shrink-0">
-            <Placeholder label="LOGO" ratio="16/5" />
-          </div>
-          <div className="flex-grow text-base leading-7 text-neutral-700 md:text-[1.05rem]">
+    <footer className="bg-deep-950 dark:bg-black text-white">
+      {/* 상단 소개 */}
+      <div className="mx-auto max-w-container px-4 py-16 md:px-10 lg:px-16">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          {/* 브랜드 + 소개 */}
+          <div className="max-w-sm">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-2xl">🐾</span>
+              <span className="text-xl font-extrabold tracking-tight text-primary-400">
+                {company.name}
+              </span>
+            </div>
             {company.intro.map((p, i) => (
-              <p key={i} className="mb-4 last:mb-0">
+              <p key={i} className="mb-2 text-sm leading-relaxed text-white/50 last:mb-0">
                 {p}
               </p>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* 하단 다크 영역 */}
-      <div className="bg-black px-4 py-12 md:px-10 lg:px-40">
-        <div className="mx-auto flex max-w-container flex-col gap-10">
-          <div className="flex flex-col justify-between gap-8 md:flex-row">
-            {/* 주소 */}
-            <div className="flex flex-col gap-2.5 text-sm">
-              {company.offices.map((o) => (
-                <div
-                  key={o.label}
-                  className="flex flex-col gap-1 md:flex-row md:gap-8"
-                >
-                  <div className="w-14 shrink-0 font-bold text-neutral-200">
-                    {o.label}
-                  </div>
-                  <ul className="flex flex-col gap-1 font-medium text-neutral-400 md:flex-row md:gap-8">
-                    <li className="md:w-60">{o.address}</li>
-                    <li className="md:w-32">Tel : {o.tel}</li>
-                    <li>Fax : {o.fax}</li>
-                  </ul>
+          {/* 컬러 팔레트 표시 */}
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">
+              Color Palette
+            </p>
+            <div className="flex gap-2">
+              {[
+                { color: '#7c3aed', label: 'Violet' },
+                { color: '#a78bfa', label: 'Lavender' },
+                { color: '#f59e0b', label: 'Amber' },
+                { color: '#10b981', label: 'Emerald' },
+                { color: '#1e1b4b', label: 'Deep' },
+              ].map(p => (
+                <div key={p.label} className="flex flex-col items-center gap-1">
+                  <div
+                    className="h-8 w-8 rounded-full border-2 border-white/20 shadow"
+                    style={{ background: p.color }}
+                    title={p.color}
+                  />
+                  <span className="text-[10px] text-white/40">{p.label}</span>
                 </div>
               ))}
             </div>
+          </div>
 
-            {/* Family site */}
-            <div className="w-full md:w-56">
-              <select
-                aria-label="Family site"
-                className="w-full rounded border border-zinc-600 bg-transparent px-4 py-2.5 text-sm font-bold text-neutral-300"
-                defaultValue=""
-                onChange={(e) => {
-                  if (e.target.value) window.open(e.target.value, '_blank')
-                }}
-              >
-                <option value="" disabled>
-                  Family site
-                </option>
-                {company.familySites.map((f) => (
-                  <option key={f.name} value={f.url} className="text-black">
-                    {f.name}
-                  </option>
-                ))}
-              </select>
+          {/* SNS */}
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">
+              Follow Us
+            </p>
+            <div className="flex flex-col gap-2">
+              {company.sns.map(s => (
+                <a
+                  key={s.label}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/60 transition hover:text-primary-400"
+                >
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">
+                    {s.icon === 'yt' ? '▶' : s.icon === 'ig' ? '📷' : '✍'}
+                  </span>
+                  {s.label}
+                </a>
+              ))}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* 정책 링크 + 카피라이트 */}
-          <div className="flex flex-col justify-between gap-4 border-t border-neutral-800 pt-4 text-sm md:flex-row md:items-center">
-            <ul className="flex">
-              {company.footerLinks.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    to={l.to}
-                    className={[
-                      'px-6 first:pl-0',
-                      l.strong
-                        ? 'font-black text-white'
-                        : 'font-medium text-neutral-400 hover:text-white',
-                    ].join(' ')}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <p className="text-zinc-500">{company.copyright}</p>
+      {/* 하단 정보 바 */}
+      <div className="border-t border-white/10 px-4 py-6 md:px-10 lg:px-16">
+        <div className="mx-auto flex max-w-container flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          {/* 주소 */}
+          <div className="text-xs text-white/30">
+            {company.offices.map(o => (
+              <p key={o.label}>
+                {o.label} · {o.address} · Tel. {o.tel}
+              </p>
+            ))}
           </div>
+
+          {/* 정책 링크 */}
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            {company.footerLinks.map(l => (
+              <li key={l.label}>
+                <Link
+                  to={l.to}
+                  className={[
+                    'text-xs transition',
+                    l.strong
+                      ? 'font-bold text-white/70 hover:text-white'
+                      : 'text-white/30 hover:text-white/60',
+                  ].join(' ')}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 카피라이트 */}
+        <div className="mx-auto mt-4 max-w-container">
+          <p className="text-xs text-white/20">{company.copyright}</p>
         </div>
       </div>
     </footer>

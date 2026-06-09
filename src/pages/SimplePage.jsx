@@ -1,36 +1,23 @@
-import Placeholder from '../components/Placeholder'
+import { Link } from 'react-router-dom'
+import SubPageLayout from '../components/SubPageLayout'
 
-// 아직 콘텐츠가 정해지지 않은 단순 페이지용 공통 템플릿
 export default function SimplePage({ title }) {
   return (
-    <div>
-      {/* 페이지 타이틀 영역 */}
-      <div className="bg-white">
-        <div className="mx-auto max-w-container px-4 pb-10 pt-12 md:px-10 lg:px-20">
-          <div className="flex flex-col-reverse justify-between md:flex-row">
-            <h2 className="mb-6 text-4xl font-bold leading-none text-stone-500 md:mb-0 md:text-5xl">
-              {title}
-            </h2>
-            <p className="mb-4 text-sm font-medium text-zinc-500 md:mb-0">
-              홈<span className="ml-3 border-l border-zinc-300 pl-3">{title}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <Placeholder label={`PAGE HEAD — ${title}`} ratio="32/9" />
-
-      <div className="mx-auto max-w-container px-4 py-24 text-center md:px-10 lg:px-40">
-        <p className="text-xl font-medium text-neutral-600">
-          “{title}” 페이지 콘텐츠가 들어갈 영역입니다.
+    <SubPageLayout
+      breadcrumb={[{ label: title }]}
+      title={title}
+    >
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        <span className="mb-6 text-6xl opacity-40">🐾</span>
+        <h2 className="mb-3 text-2xl font-bold text-deep dark:text-white">{title}</h2>
+        <p className="mb-2 text-neutral-500 dark:text-primary-300">이 페이지는 현재 준비 중입니다.</p>
+        <p className="text-sm text-neutral-400 dark:text-primary-400/60">
+          콘텐츠를 곧 만나보실 수 있습니다!
         </p>
-        <p className="mt-3 text-neutral-400">
-          템플릿에 포함된 구조를 기반으로 실제 내용을 추가하세요.
-        </p>
-        <div className="mx-auto mt-12 max-w-4xl">
-          <Placeholder label={`${title} CONTENT`} ratio="21/9" rounded />
-        </div>
+        <Link to="/" className="btn-primary mt-8">
+          홈으로 돌아가기 →
+        </Link>
       </div>
-    </div>
+    </SubPageLayout>
   )
 }

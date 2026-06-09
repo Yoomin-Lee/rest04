@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-// 우측 하단 "맨위로" 버튼 — 스크롤 시 노출
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false)
 
@@ -17,9 +16,9 @@ export default function ScrollToTopButton() {
       type="button"
       aria-label="맨위로 가기"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-8 right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg transition hover:brightness-110"
+      className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-primary-600 text-white shadow-lg shadow-primary-600/40 transition hover:bg-primary-700 hover:-translate-y-1 active:scale-95"
     >
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <path d="m6 15 6-6 6 6" />
       </svg>
     </button>
