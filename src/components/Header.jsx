@@ -4,6 +4,12 @@ import { nav, company } from '../data/site'
 import ThemeToggle from './ThemeToggle'
 import Icon from './Icon'
 
+// nav 항목의 active 여부 — 자식 경로 포함
+function isNavActive(item, pathname) {
+  if (pathname.startsWith(item.to.split('/').slice(0, 2).join('/'))) return true
+  return item.children?.some(c => pathname.startsWith(c.to)) ?? false
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hovered, setHovered] = useState(null)
@@ -57,29 +63,39 @@ export default function Header() {
 
           {/* 데스크탑 메뉴 */}
           <ul className="hidden items-stretch lg:flex">
-            {nav.map(item => (
-              <li
-                key={item.label}
-                className="group flex items-center"
-                onMouseEnter={() => setHovered(item.label)}
-              >
-                <NavLink
-                  to={item.to}
-                  className={({ isActive }) =>
-                    [
-                      'px-5 py-5 text-[15px] font-semibold transition',
-                      isActive
-                        ? 'text-primary-600 dark:text-primary-400'
-                        : scrolled || !isHome
-                        ? 'text-neutral-700 hover:text-primary-600 dark:text-primary-200 dark:hover:text-primary-400'
-                        : 'text-white/90 hover:text-white',
-                    ].join(' ')
-                  }
+            {nav.map(item => {
+              const active = isNavActive(item, location.pathname)
+              return (
+                <li
+                  key={item.label}
+                  className="group relative flex items-center"
+                  onMouseEnter={() => setHovered(item.label)}
                 >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
+                  <Link
+                    to={item.to}
+                    className={[
+                      'px-5 py-5 text-[15px] font-bold transition',
+                      active
+                        ? scrolled || !isHome
+                          ? 'text-primary-600 dark:text-primary-400'
+                          : 'text-white'
+                        : scrolled || !isHome
+                        ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-400'
+                        : 'text-white/80 hover:text-white',
+                    ].join(' ')}
+                  >
+                    {item.label}
+                  </Link>
+                  {/* active 밑줄 인디케이터 */}
+                  {active && (
+                    <span className={[
+                      'absolute bottom-0 left-5 right-5 h-0.5 rounded-full',
+                      scrolled || !isHome ? 'bg-primary-600 dark:bg-primary-400' : 'bg-white',
+                    ].join(' ')} />
+                  )}
+                </li>
+              )
+            })}
           </ul>
 
           {/* 우측: 다크모드 토글 + 햄버거 */}
@@ -164,11 +180,16 @@ export default function Header() {
 
             {/* 메뉴 목록 */}
             <ul className="flex flex-col p-4">
-              {nav.map(item => (
+              {nav.map(item => {
+                const active = isNavActive(item, location.pathname)
+                return (
                 <li key={item.label} className="border-b border-neutral-100 dark:border-deep-700 last:border-0">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between py-4 text-base font-bold text-neutral-900 dark:text-white"
+                    className={[
+                      'flex w-full items-center justify-between py-4 text-base font-bold transition',
+                      active ? 'text-primary-600 dark:text-primary-400' : 'text-neutral-900 dark:text-white',
+                    ].join(' ')}
                     onClick={() =>
                       setMobileExpanded(mobileExpanded === item.label ? null : item.label)
                     }
@@ -197,7 +218,7 @@ export default function Header() {
                     </ul>
                   )}
                 </li>
-              ))}
+              )})}
             </ul>
 
             {/* 하단 CTA */}
