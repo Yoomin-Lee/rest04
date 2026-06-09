@@ -94,13 +94,13 @@
 
 /* 냥젤리 커스텀 커서 */
 * {
-  cursor: url('/rest04/cursor.svg') 21 28, auto;
+  cursor: url('/rest04/cursor.svg') 14 21, auto;
 }
 input[type="text"],
 input[type="email"],
 input[type="search"],
 textarea {
-  cursor: url('/rest04/cursor.svg') 21 28, text;
+  cursor: url('/rest04/cursor.svg') 14 21, text;
 }
 
 /* 커스텀 스크롤바 */
