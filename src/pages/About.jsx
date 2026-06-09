@@ -55,40 +55,161 @@ function Greetings() {
 }
 
 function Vision() {
-  const visions = [
-    { icon: 'star',   title: '비전', desc: '모든 반려동물이 최고의 헬스케어 교육 혜택을 받을 수 있는 세상을 만듭니다.', color: 'bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800', iconColor: 'text-primary-500 dark:text-primary-400' },
-    { icon: 'target', title: '미션', desc: 'AI와 전문 수의학 지식을 결합한 접근 가능한 교육으로 반려동물 보호자의 역량을 강화합니다.', color: 'bg-support-50 dark:bg-support-900/20 border-support-100 dark:border-support-800', iconColor: 'text-support-600 dark:text-support-400' },
+  const pillars = [
+    {
+      icon: 'hospital',
+      iconColor: 'text-support-500',
+      bg: 'bg-support-50 dark:bg-support-900/20',
+      title: '콘텐츠 전문성',
+      desc: '모든 교육 콘텐츠는 현직 수의사와 전문 훈련사가 직접 제작·검토합니다. 상업적 목적의 정보를 배제하고 임상에서 검증된 지식만 전달합니다.',
+    },
+    {
+      icon: 'ai',
+      iconColor: 'text-primary-500',
+      bg: 'bg-primary-50 dark:bg-primary-900/20',
+      title: 'AI 기반 개인화',
+      desc: 'AI 기술로 보호자의 반려동물 종·나이·건강 상태에 맞는 맞춤형 학습 경로를 제공합니다. 데이터 기반으로 콘텐츠를 지속 개선합니다.',
+    },
+    {
+      icon: 'users',
+      iconColor: 'text-accent',
+      bg: 'bg-accent-50 dark:bg-accent-900/20',
+      title: '커뮤니티 연결',
+      desc: '보호자와 전문가가 소통하는 신뢰 기반 커뮤니티를 구축합니다. 혼자 걱정하지 않아도 되는 환경을 만드는 것이 목표입니다.',
+    },
+    {
+      icon: 'heart',
+      iconColor: 'text-red-400',
+      bg: 'bg-red-50 dark:bg-red-900/20',
+      title: '사회적 가치',
+      desc: '기초 건강 정보는 누구나 무료로 접근할 수 있어야 합니다. 유기동물 보호 교육 및 취약계층 반려인 지원 프로그램을 운영합니다.',
+    },
   ]
+
   const values = [
-    { icon: 'shield', iconColor: 'text-primary-500',  title: '신뢰', desc: '검증된 전문가의 지식만을 제공합니다' },
-    { icon: 'bulb',   iconColor: 'text-accent',       title: '혁신', desc: 'AI 기술로 더 나은 교육 경험을 만듭니다' },
-    { icon: 'heart',  iconColor: 'text-red-400',      title: '공감', desc: '반려동물과 보호자 모두를 위해 설계합니다' },
-    { icon: 'books',  iconColor: 'text-support-500',  title: '접근성', desc: '누구나 쉽게 배울 수 있는 콘텐츠를 만듭니다' },
+    {
+      icon: 'shield',
+      iconColor: 'text-primary-500',
+      title: '신뢰',
+      desc: '모든 콘텐츠는 현직 수의사가 직접 제작·검토합니다. 광고성 정보 없이, 오직 반려동물에게 최선인 지식만 전달합니다.',
+    },
+    {
+      icon: 'bulb',
+      iconColor: 'text-accent',
+      title: '혁신',
+      desc: 'AI 기술을 교육에 접목해 개인화된 학습 경험을 제공합니다. 끊임없는 기술 연구로 더 나은 케어 방법을 탐구합니다.',
+    },
+    {
+      icon: 'heart',
+      iconColor: 'text-red-400',
+      title: '공감',
+      desc: '반려동물을 가족으로 여기는 보호자의 마음을 이해합니다. 걱정되는 순간마다 가장 먼저 찾을 수 있는 플랫폼이 되겠습니다.',
+    },
+    {
+      icon: 'books',
+      iconColor: 'text-support-500',
+      title: '접근성',
+      desc: '교육의 언어적·경제적 장벽을 낮춥니다. 기초 건강 정보는 누구나 무료로, 심화 교육은 합리적인 비용으로 제공합니다.',
+    },
+  ]
+
+  const goals = [
+    { value: '3,000+', label: '수강생 달성', sub: '2026년 목표' },
+    { value: '200+',   label: '전문 콘텐츠', sub: '2026년 목표' },
+    { value: '50+',    label: '파트너 병원', sub: '2026년 목표' },
+    { value: '20%',    label: '예방 비용 절감', sub: '보호자 기여 목표' },
   ]
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-14">
+
+      {/* 비전 / 미션 */}
       <div className="grid gap-6 md:grid-cols-2">
-        {visions.map(v => (
-          <div key={v.title} className={`rounded-2xl border p-8 ${v.color}`}>
-            <Icon name={v.icon} size={36} className={`mb-4 ${v.iconColor}`} />
-            <h3 className="mb-3 text-xl font-bold text-deep dark:text-white">{v.title}</h3>
-            <p className="text-base leading-relaxed text-neutral-600 dark:text-primary-200">{v.desc}</p>
-          </div>
-        ))}
+        <div className="rounded-2xl border border-primary-100 bg-primary-50 p-8 dark:border-primary-800 dark:bg-primary-900/30">
+          <Icon name="star" size={36} className="mb-4 text-primary-500 dark:text-primary-400" />
+          <p className="section-label mb-2">Vision</p>
+          <h3 className="mb-4 text-xl font-extrabold text-deep dark:text-white">
+            반려동물 헬스케어 교육의<br />새로운 기준을 만듭니다
+          </h3>
+          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-primary-200">
+            2030년까지, 반려동물을 키우는 모든 가정이 수의학 전문 지식에 쉽게 접근할 수 있는 교육 환경을 만들겠습니다.
+            국내 반려동물 보호자 1,000만 명에게 신뢰할 수 있는 헬스케어 정보를 제공하고, 수의사와 보호자 사이의 소통 격차를 해소합니다.
+          </p>
+          <ul className="space-y-2">
+            {['임상 검증 콘텐츠로 정보 신뢰도 확보', 'AI 개인화 교육으로 보호자 역량 강화', '예방 중심 케어 문화 확산'].map(t => (
+              <li key={t} className="flex items-start gap-2 text-sm text-primary-700 dark:text-primary-300">
+                <Icon name="checkCircle" size={15} className="mt-0.5 shrink-0 text-primary-500" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="rounded-2xl border border-support-100 bg-support-50 p-8 dark:border-support-800 dark:bg-support-900/20">
+          <Icon name="target" size={36} className="mb-4 text-support-600 dark:text-support-400" />
+          <p className="section-label mb-2">Mission</p>
+          <h3 className="mb-4 text-xl font-extrabold text-deep dark:text-white">
+            보호자가 먼저 알면<br />반려동물이 더 건강해집니다
+          </h3>
+          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-primary-200">
+            김예진 동물병원의 임상 경험과 AI 기술을 결합하여, 보호자가 반려동물의 건강을 더 능동적으로 관리할 수 있도록 돕겠습니다.
+            단순한 정보 전달을 넘어, 보호자의 실천 능력을 키우는 교육을 지향합니다.
+          </p>
+          <ul className="space-y-2">
+            {['수의사 직접 제작 100% 전문 콘텐츠', 'AI 맞춤 학습 경로로 효율적 지식 습득', '예방·행동·영양 전 분야 통합 교육'].map(t => (
+              <li key={t} className="flex items-start gap-2 text-sm text-support-700 dark:text-support-300">
+                <Icon name="checkCircle" size={15} className="mt-0.5 shrink-0 text-support-500" />
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div>
-        <p className="section-label mb-6">Core Values</p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map(v => (
-            <div key={v.title} className="card-base p-6 text-center">
-              <Icon name={v.icon} size={28} className={`mb-3 mx-auto ${v.iconColor}`} />
-              <h4 className="mb-2 font-bold text-deep dark:text-white">{v.title}</h4>
-              <p className="text-sm text-neutral-500 dark:text-primary-300">{v.desc}</p>
+
+      {/* 2026 목표 수치 */}
+      <div className="rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 p-8 text-white">
+        <p className="mb-6 text-center text-sm font-bold tracking-widest opacity-80">2026 KEY GOALS</p>
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          {goals.map(g => (
+            <div key={g.label} className="text-center">
+              <p className="text-3xl font-extrabold">{g.value}</p>
+              <p className="mt-1 text-sm font-semibold">{g.label}</p>
+              <p className="mt-0.5 text-xs opacity-60">{g.sub}</p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* 전략 방향 */}
+      <div>
+        <p className="section-label mb-6">Strategic Pillars</p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {pillars.map(p => (
+            <div key={p.title} className={`rounded-2xl border border-transparent p-6 ${p.bg}`}>
+              <div className="mb-3 flex items-center gap-3">
+                <Icon name={p.icon} size={22} className={p.iconColor} />
+                <h4 className="font-bold text-deep dark:text-white">{p.title}</h4>
+              </div>
+              <p className="text-sm leading-relaxed text-neutral-600 dark:text-primary-200">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 핵심 가치 */}
+      <div>
+        <p className="section-label mb-6">Core Values</p>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {values.map(v => (
+            <div key={v.title} className="card-base p-6">
+              <Icon name={v.icon} size={26} className={`mb-3 ${v.iconColor}`} />
+              <h4 className="mb-2 font-bold text-deep dark:text-white">{v.title}</h4>
+              <p className="text-sm leading-relaxed text-neutral-500 dark:text-primary-300">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   )
 }
