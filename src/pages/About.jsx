@@ -125,19 +125,23 @@ function Vision() {
 
       {/* 비전 / 미션 */}
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border border-primary-100 bg-primary-50 p-8 dark:border-primary-800 dark:bg-primary-900/30">
-          <Icon name="star" size={36} className="mb-4 text-primary-500 dark:text-primary-400" />
-          <p className="section-label mb-2">Vision</p>
+        <div className="rounded-2xl border border-primary-200 bg-white p-8 dark:border-primary-700 dark:bg-deep-800">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-100 dark:bg-primary-900/50">
+              <Icon name="star" size={24} className="text-primary-600 dark:text-primary-400" />
+            </div>
+            <p className="text-xs font-bold tracking-widest text-primary-600 dark:text-primary-400 uppercase">Vision</p>
+          </div>
           <h3 className="mb-4 text-xl font-extrabold text-deep dark:text-white">
             반려동물 헬스케어 교육의<br />새로운 기준을 만듭니다
           </h3>
-          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-primary-200">
+          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
             2030년까지, 반려동물을 키우는 모든 가정이 수의학 전문 지식에 쉽게 접근할 수 있는 교육 환경을 만들겠습니다.
             국내 반려동물 보호자 1,000만 명에게 신뢰할 수 있는 헬스케어 정보를 제공하고, 수의사와 보호자 사이의 소통 격차를 해소합니다.
           </p>
           <ul className="space-y-2">
             {['임상 검증 콘텐츠로 정보 신뢰도 확보', 'AI 개인화 교육으로 보호자 역량 강화', '예방 중심 케어 문화 확산'].map(t => (
-              <li key={t} className="flex items-start gap-2 text-sm text-primary-700 dark:text-primary-300">
+              <li key={t} className="flex items-start gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-200">
                 <Icon name="checkCircle" size={15} className="mt-0.5 shrink-0 text-primary-500" />
                 {t}
               </li>
@@ -145,19 +149,23 @@ function Vision() {
           </ul>
         </div>
 
-        <div className="rounded-2xl border border-support-100 bg-support-50 p-8 dark:border-support-800 dark:bg-support-900/20">
-          <Icon name="target" size={36} className="mb-4 text-support-600 dark:text-support-400" />
-          <p className="section-label mb-2">Mission</p>
+        <div className="rounded-2xl border border-support-200 bg-white p-8 dark:border-support-700 dark:bg-deep-800">
+          <div className="mb-4 flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-support-100 dark:bg-support-900/50">
+              <Icon name="target" size={24} className="text-support-600 dark:text-support-400" />
+            </div>
+            <p className="text-xs font-bold tracking-widest text-support-600 dark:text-support-400 uppercase">Mission</p>
+          </div>
           <h3 className="mb-4 text-xl font-extrabold text-deep dark:text-white">
             보호자가 먼저 알면<br />반려동물이 더 건강해집니다
           </h3>
-          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-primary-200">
+          <p className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
             김예진 동물병원의 임상 경험과 AI 기술을 결합하여, 보호자가 반려동물의 건강을 더 능동적으로 관리할 수 있도록 돕겠습니다.
             단순한 정보 전달을 넘어, 보호자의 실천 능력을 키우는 교육을 지향합니다.
           </p>
           <ul className="space-y-2">
             {['수의사 직접 제작 100% 전문 콘텐츠', 'AI 맞춤 학습 경로로 효율적 지식 습득', '예방·행동·영양 전 분야 통합 교육'].map(t => (
-              <li key={t} className="flex items-start gap-2 text-sm text-support-700 dark:text-support-300">
+              <li key={t} className="flex items-start gap-2 text-sm font-medium text-neutral-700 dark:text-neutral-200">
                 <Icon name="checkCircle" size={15} className="mt-0.5 shrink-0 text-support-500" />
                 {t}
               </li>
