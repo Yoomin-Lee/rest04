@@ -46,15 +46,18 @@
   }
 
   .tab-btn {
-    @apply flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition;
+    @apply flex items-center gap-2 rounded-xl px-6 py-3 text-[15px] font-bold transition-all duration-200;
   }
 
   .tab-btn-active {
-    @apply bg-primary-600 text-white shadow-sm;
+    @apply bg-primary-600 text-white shadow-md shadow-primary-600/30;
   }
 
   .tab-btn-inactive {
-    @apply bg-neutral-100 text-neutral-600 hover:bg-primary-100 hover:text-primary-700 dark:bg-deep-800 dark:text-primary-300 dark:hover:bg-primary-900;
+    @apply border-2 border-neutral-200 bg-white text-neutral-600
+    hover:border-primary-400 hover:bg-primary-50 hover:text-primary-700
+    dark:border-deep-700 dark:bg-deep-800 dark:text-primary-200
+    dark:hover:border-primary-500 dark:hover:bg-deep-700 dark:hover:text-white;
   }
 }
 
@@ -87,6 +90,17 @@
 
 .dark .gradient-feature {
   background: linear-gradient(180deg, #14122f 0%, #0e0c1f 100%);
+}
+
+/* 냥젤리 커스텀 커서 */
+* {
+  cursor: url('/rest04/cursor.svg') 21 28, auto;
+}
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+  cursor: url('/rest04/cursor.svg') 21 28, text;
 }
 
 /* 커스텀 스크롤바 */
