@@ -1,4 +1,5 @@
 import { useTheme } from '../context/ThemeContext'
+import Icon from './Icon'
 
 export default function ThemeToggle({ className = '' }) {
   const { theme, toggle } = useTheme()
@@ -20,9 +21,12 @@ export default function ThemeToggle({ className = '' }) {
           'absolute flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm transition-all duration-300',
           isDark ? 'left-[calc(100%-1.75rem)]' : 'left-1',
         ].join(' ')}
-        style={{ fontSize: '13px' }}
       >
-        {isDark ? '🌙' : '☀️'}
+        <Icon
+          name={isDark ? 'moon' : 'sun'}
+          size={13}
+          className={isDark ? 'text-primary-600' : 'text-amber-500'}
+        />
       </span>
     </button>
   )

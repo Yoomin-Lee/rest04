@@ -3,10 +3,10 @@
 // ============================================================
 
 export const videoCategories = [
-  { key: 'ai',       label: 'AI 교육',      emoji: '🤖', desc: 'AI 기술로 더 스마트한 반려동물 케어' },
-  { key: 'literacy', label: 'AI 리터러시',  emoji: '📖', desc: 'AI를 올바르게 이해하고 활용하기' },
-  { key: 'health',   label: '반려동물 건강', emoji: '🐾', desc: '전문 수의사가 알려주는 건강 관리' },
-  { key: 'behavior', label: '행동 교정',    emoji: '🎯', desc: '과학적 훈련으로 더 행복한 반려생활' },
+  { key: 'ai',       label: 'AI 교육',      icon: 'ai',     desc: 'AI 기술로 더 스마트한 반려동물 케어' },
+  { key: 'literacy', label: 'AI 리터러시',  icon: 'book',   desc: 'AI를 올바르게 이해하고 활용하기' },
+  { key: 'health',   label: '반려동물 건강', icon: 'paw',    desc: '전문 수의사가 알려주는 건강 관리' },
+  { key: 'behavior', label: '행동 교정',    icon: 'target', desc: '과학적 훈련으로 더 행복한 반려생활' },
 ]
 
 export const videos = {

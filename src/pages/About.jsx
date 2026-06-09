@@ -1,10 +1,11 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import SubPageLayout from '../components/SubPageLayout'
+import Icon from '../components/Icon'
 
 const tabs = [
-  { key: 'greetings', label: 'CEO 인사말', emoji: '👋' },
-  { key: 'vision',    label: '비전/미션',  emoji: '🎯' },
-  { key: 'history',   label: '연혁',       emoji: '📅' },
+  { key: 'greetings', label: 'CEO 인사말', icon: 'person' },
+  { key: 'vision',    label: '비전/미션',  icon: 'target' },
+  { key: 'history',   label: '연혁',       icon: 'calendar' },
 ]
 
 function Greetings() {
@@ -12,7 +13,7 @@ function Greetings() {
     <div className="flex flex-col gap-12 md:flex-row">
       <div className="shrink-0 md:w-64">
         <div className="flex h-64 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900/40 dark:to-deep-700 md:w-64">
-          <span className="text-7xl opacity-60">🐾</span>
+          <Icon name="paw" size={72} className="text-primary-400 opacity-50" />
         </div>
         <div className="mt-4 text-center">
           <p className="text-lg font-bold text-deep dark:text-white">김예진</p>
@@ -55,14 +56,14 @@ function Greetings() {
 
 function Vision() {
   const visions = [
-    { icon: '🌟', title: '비전', desc: '모든 반려동물이 최고의 헬스케어 교육 혜택을 받을 수 있는 세상을 만듭니다.', color: 'bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800' },
-    { icon: '🎯', title: '미션', desc: 'AI와 전문 수의학 지식을 결합한 접근 가능한 교육으로 반려동물 보호자의 역량을 강화합니다.', color: 'bg-support-50 dark:bg-support-900/20 border-support-100 dark:border-support-800' },
+    { icon: 'star',   title: '비전', desc: '모든 반려동물이 최고의 헬스케어 교육 혜택을 받을 수 있는 세상을 만듭니다.', color: 'bg-primary-50 dark:bg-primary-900/30 border-primary-100 dark:border-primary-800', iconColor: 'text-primary-500 dark:text-primary-400' },
+    { icon: 'target', title: '미션', desc: 'AI와 전문 수의학 지식을 결합한 접근 가능한 교육으로 반려동물 보호자의 역량을 강화합니다.', color: 'bg-support-50 dark:bg-support-900/20 border-support-100 dark:border-support-800', iconColor: 'text-support-600 dark:text-support-400' },
   ]
   const values = [
-    { icon: '🤝', title: '신뢰', desc: '검증된 전문가의 지식만을 제공합니다' },
-    { icon: '💡', title: '혁신', desc: 'AI 기술로 더 나은 교육 경험을 만듭니다' },
-    { icon: '❤️', title: '공감', desc: '반려동물과 보호자 모두를 위해 설계합니다' },
-    { icon: '📚', title: '접근성', desc: '누구나 쉽게 배울 수 있는 콘텐츠를 만듭니다' },
+    { icon: 'shield', iconColor: 'text-primary-500',  title: '신뢰', desc: '검증된 전문가의 지식만을 제공합니다' },
+    { icon: 'bulb',   iconColor: 'text-accent',       title: '혁신', desc: 'AI 기술로 더 나은 교육 경험을 만듭니다' },
+    { icon: 'heart',  iconColor: 'text-red-400',      title: '공감', desc: '반려동물과 보호자 모두를 위해 설계합니다' },
+    { icon: 'books',  iconColor: 'text-support-500',  title: '접근성', desc: '누구나 쉽게 배울 수 있는 콘텐츠를 만듭니다' },
   ]
 
   return (
@@ -70,7 +71,7 @@ function Vision() {
       <div className="grid gap-6 md:grid-cols-2">
         {visions.map(v => (
           <div key={v.title} className={`rounded-2xl border p-8 ${v.color}`}>
-            <span className="mb-4 block text-4xl">{v.icon}</span>
+            <Icon name={v.icon} size={36} className={`mb-4 ${v.iconColor}`} />
             <h3 className="mb-3 text-xl font-bold text-deep dark:text-white">{v.title}</h3>
             <p className="text-base leading-relaxed text-neutral-600 dark:text-primary-200">{v.desc}</p>
           </div>
@@ -81,7 +82,7 @@ function Vision() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {values.map(v => (
             <div key={v.title} className="card-base p-6 text-center">
-              <span className="mb-3 block text-3xl">{v.icon}</span>
+              <Icon name={v.icon} size={28} className={`mb-3 mx-auto ${v.iconColor}`} />
               <h4 className="mb-2 font-bold text-deep dark:text-white">{v.title}</h4>
               <p className="text-sm text-neutral-500 dark:text-primary-300">{v.desc}</p>
             </div>
@@ -133,7 +134,8 @@ export default function About() {
   return (
     <SubPageLayout
       breadcrumb={[{ label: '회사소개' }]}
-      title={`${current.emoji} ${current.label}`}
+      title={current.label}
+      icon={current.icon}
     >
       <div className="mb-10 flex flex-wrap gap-2 border-b border-neutral-100 dark:border-deep-700 pb-6">
         {tabs.map(t => (
@@ -141,7 +143,8 @@ export default function About() {
             onClick={() => navigate(`/about/${t.key}`)}
             className={['tab-btn', t.key === tab ? 'tab-btn-active' : 'tab-btn-inactive'].join(' ')}
           >
-            {t.emoji} {t.label}
+            <Icon name={t.icon} size={15} className="shrink-0" />
+            {t.label}
           </button>
         ))}
       </div>

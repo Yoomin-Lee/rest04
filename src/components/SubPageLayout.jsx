@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
+import Icon from './Icon'
 
-export default function SubPageLayout({ breadcrumb = [], title, children }) {
+export default function SubPageLayout({ breadcrumb = [], title, icon, children }) {
   return (
     <div className="min-h-screen dark:bg-deep-950">
       {/* 서브 헤더 */}
@@ -20,7 +21,10 @@ export default function SubPageLayout({ breadcrumb = [], title, children }) {
               </span>
             ))}
           </nav>
-          <h1 className="text-3xl font-extrabold text-white md:text-4xl">{title}</h1>
+          <h1 className="flex items-center gap-3 text-3xl font-extrabold text-white md:text-4xl">
+            {icon && <Icon name={icon} size={32} className="opacity-90 shrink-0" />}
+            {title}
+          </h1>
         </div>
       </div>
 

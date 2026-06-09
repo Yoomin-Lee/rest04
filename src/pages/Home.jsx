@@ -4,6 +4,7 @@ import { company, heroSlides, stats, features, notices } from '../data/site'
 import { videos, videoCategories } from '../data/videos'
 import VideoCard from '../components/VideoCard'
 import VideoModal from '../components/VideoModal'
+import Icon from '../components/Icon'
 
 // ── 히어로 ────────────────────────────────────────────────
 function Hero() {
@@ -21,11 +22,11 @@ function Hero() {
     <section className="gradient-hero relative flex min-h-screen items-center overflow-hidden">
       {/* 떠다니는 파우 아이콘들 */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="animate-float absolute left-[10%] top-[20%] text-5xl opacity-10">🐾</span>
-        <span className="animate-float-d absolute right-[15%] top-[30%] text-4xl opacity-10">🐕</span>
-        <span className="animate-float absolute left-[60%] bottom-[25%] text-6xl opacity-10">🐈</span>
-        <span className="animate-float-d absolute left-[30%] bottom-[15%] text-3xl opacity-10">🦮</span>
-        <span className="animate-float absolute right-[8%] bottom-[40%] text-5xl opacity-10">🐾</span>
+        <span className="animate-float absolute left-[10%] top-[20%] opacity-10 text-white"><Icon name="paw" size={48} /></span>
+        <span className="animate-float-d absolute right-[15%] top-[30%] opacity-10 text-white"><Icon name="paw" size={36} /></span>
+        <span className="animate-float absolute left-[60%] bottom-[25%] opacity-10 text-white"><Icon name="paw" size={56} /></span>
+        <span className="animate-float-d absolute left-[30%] bottom-[15%] opacity-10 text-white"><Icon name="paw" size={28} /></span>
+        <span className="animate-float absolute right-[8%] bottom-[40%] opacity-10 text-white"><Icon name="paw" size={44} /></span>
         {/* 그라디언트 동그라미 */}
         <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-primary-400/20 blur-3xl" />
         <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
@@ -101,7 +102,7 @@ function Stats() {
         <ul className="grid grid-cols-2 divide-x divide-y divide-neutral-100 dark:divide-deep-700 md:grid-cols-4 md:divide-y-0">
           {stats.map(s => (
             <li key={s.label} className="flex flex-col items-center gap-1 px-6 py-8">
-              <span className="text-3xl">{s.icon}</span>
+              <Icon name={s.icon} size={32} className="text-primary-500 dark:text-primary-400" />
               <span className="text-3xl font-extrabold text-primary-600 dark:text-primary-400 md:text-4xl">
                 {s.value}
               </span>
@@ -136,8 +137,8 @@ function Features() {
             const c = colorMap[f.color] || colorMap.primary
             return (
               <Link key={f.key} to={f.to} className="group card-base p-6 hover:shadow-primary-200/60 dark:hover:shadow-primary-800/30">
-                <div className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${c.bg} text-3xl transition group-hover:scale-110`}>
-                  {f.icon}
+                <div className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${c.bg} transition group-hover:scale-110`}>
+                  <Icon name={f.icon} size={28} className={c.icon} />
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-deep dark:text-white">{f.title}</h3>
                 <p className="mb-4 text-sm leading-relaxed text-neutral-500 dark:text-primary-200/70">
@@ -189,7 +190,7 @@ function LatestVideos() {
               to={`/videos/${cat.key}`}
               className="tab-btn tab-btn-inactive"
             >
-              <span>{cat.emoji}</span>
+              <Icon name={cat.icon} size={15} className="shrink-0" />
               {cat.label}
             </Link>
           ))}
@@ -240,7 +241,8 @@ function AboutBanner() {
               회사 소개 보기 →
             </Link>
             <Link to="/contact" className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 px-6 py-3 font-bold text-white transition hover:bg-white/10">
-              📩 문의하기
+              <Icon name="mail" size={16} className="shrink-0" />
+              문의하기
             </Link>
           </div>
         </div>

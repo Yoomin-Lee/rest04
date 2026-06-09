@@ -89,7 +89,8 @@ export default function Privacy() {
   return (
     <SubPageLayout
       breadcrumb={[{ label: '개인정보처리방침' }]}
-      title="🔒 개인정보처리방침"
+      title="개인정보처리방침"
+      icon="lock"
     >
       <div className="mb-8 rounded-2xl bg-primary-50 dark:bg-primary-900/20 p-6">
         <p className="text-sm leading-relaxed text-primary-800 dark:text-primary-200">

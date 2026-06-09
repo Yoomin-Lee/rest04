@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { nav, company } from '../data/site'
 import ThemeToggle from './ThemeToggle'
+import Icon from './Icon'
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -37,7 +38,11 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-container items-center justify-between px-4 md:px-8 lg:px-16">
           {/* 로고 */}
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-2xl">🐾</span>
+            <Icon
+              name="paw"
+              size={24}
+              className={scrolled || !isHome ? 'text-primary-600 dark:text-primary-400' : 'text-white'}
+            />
             <span
               className={[
                 'text-xl font-extrabold tracking-tight transition',
@@ -137,7 +142,7 @@ export default function Header() {
             {/* 헤더 */}
             <div className="flex items-center justify-between border-b border-neutral-100 dark:border-deep-700 px-6 py-5">
               <div className="flex items-center gap-2">
-                <span className="text-xl">🐾</span>
+                <Icon name="paw" size={20} className="text-primary-600 dark:text-primary-400" />
                 <span className="text-lg font-extrabold text-primary-700 dark:text-primary-400">
                   {company.name}
                 </span>
@@ -202,7 +207,8 @@ export default function Header() {
                 className="btn-primary w-full justify-center"
                 onClick={() => setMobileOpen(false)}
               >
-                📩 문의하기
+                <Icon name="mail" size={16} className="shrink-0" />
+                문의하기
               </Link>
             </div>
           </div>

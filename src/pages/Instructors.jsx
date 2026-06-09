@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom'
 import SubPageLayout from '../components/SubPageLayout'
+import Icon from '../components/Icon'
 import { instructors } from '../data/site'
 
 const meta = {
-  '김수연': { icon: '🏥', bg: 'bg-support-50 dark:bg-support-900/20', badge: 'bg-support-100 text-support-700 dark:bg-support-900/40 dark:text-support-300', field: '수의학' },
-  '이준혁': { icon: '🤖', bg: 'bg-primary-50 dark:bg-primary-900/20', badge: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300', field: 'AI·펫테크' },
-  '박민지': { icon: '🎯', bg: 'bg-accent-50 dark:bg-accent-900/20', badge: 'bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300', field: '행동 교정' },
-  '최동현': { icon: '💊', bg: 'bg-support-50 dark:bg-support-900/20', badge: 'bg-support-100 text-support-700 dark:bg-support-900/40 dark:text-support-300', field: '예방의학' },
+  '김수연': { icon: 'hospital', iconColor: 'text-support-500 dark:text-support-400', bg: 'bg-support-50 dark:bg-support-900/20', badge: 'bg-support-100 text-support-700 dark:bg-support-900/40 dark:text-support-300', field: '수의학' },
+  '이준혁': { icon: 'ai',       iconColor: 'text-primary-500 dark:text-primary-400', bg: 'bg-primary-50 dark:bg-primary-900/20', badge: 'bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300', field: 'AI·펫테크' },
+  '박민지': { icon: 'target',   iconColor: 'text-accent dark:text-accent-400',       bg: 'bg-accent-50 dark:bg-accent-900/20', badge: 'bg-accent-100 text-accent-700 dark:bg-accent-900/40 dark:text-accent-300', field: '행동 교정' },
+  '최동현': { icon: 'pill',     iconColor: 'text-support-500 dark:text-support-400', bg: 'bg-support-50 dark:bg-support-900/20', badge: 'bg-support-100 text-support-700 dark:bg-support-900/40 dark:text-support-300', field: '예방의학' },
 }
 
 export default function Instructors() {
   return (
     <SubPageLayout
       breadcrumb={[{ label: '강사 소개' }]}
-      title="👨‍🏫 강사 소개"
+      title="강사 소개"
+      icon="person"
     >
       <div className="mb-14 text-center">
         <p className="section-label mb-3">Our Experts</p>
@@ -26,11 +28,11 @@ export default function Instructors() {
 
       <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
         {instructors.map(inst => {
-          const m = meta[inst.name] || { icon: '👤', bg: 'bg-neutral-100 dark:bg-deep-800', badge: 'bg-neutral-100 text-neutral-600', field: '전문가' }
+          const m = meta[inst.name] || { icon: 'person', iconColor: 'text-neutral-400', bg: 'bg-neutral-100 dark:bg-deep-800', badge: 'bg-neutral-100 text-neutral-600', field: '전문가' }
           return (
             <div key={inst.name} className="card-base overflow-hidden">
               <div className={`flex h-44 items-center justify-center ${m.bg}`}>
-                <span className="text-7xl opacity-50">{m.icon}</span>
+                <Icon name={m.icon} size={64} className={`opacity-40 ${m.iconColor}`} />
               </div>
               <div className="p-6 text-center">
                 <span className={`mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold ${m.badge}`}>
@@ -46,7 +48,10 @@ export default function Instructors() {
                   </div>
                   <div className="text-center">
                     <p className="text-2xl font-extrabold text-accent">{inst.rating}</p>
-                    <p className="text-xs text-neutral-400 dark:text-primary-400/60">⭐ 평점</p>
+                    <p className="flex items-center justify-center gap-1 text-xs text-neutral-400 dark:text-primary-400/60">
+                      <Icon name="star" size={11} className="text-amber-400" />
+                      평점
+                    </p>
                   </div>
                 </div>
               </div>

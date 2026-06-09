@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import SubPageLayout from '../components/SubPageLayout'
+import Icon from '../components/Icon'
 
 export default function SimplePage({ title }) {
   return (
@@ -8,7 +9,7 @@ export default function SimplePage({ title }) {
       title={title}
     >
       <div className="flex flex-col items-center justify-center py-20 text-center">
-        <span className="mb-6 text-6xl opacity-40">🐾</span>
+        <Icon name="paw" size={60} className="mb-6 text-neutral-300 dark:text-deep-600" />
         <h2 className="mb-3 text-2xl font-bold text-deep dark:text-white">{title}</h2>
         <p className="mb-2 text-neutral-500 dark:text-primary-300">이 페이지는 현재 준비 중입니다.</p>
         <p className="text-sm text-neutral-400 dark:text-primary-400/60">

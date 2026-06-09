@@ -1,3 +1,5 @@
+import Icon from './Icon'
+
 // YouTube 동영상 카드 — 썸네일 클릭 시 onPlay 콜백 실행
 export default function VideoCard({ video, onPlay }) {
   const thumb =
@@ -24,7 +26,7 @@ export default function VideoCard({ video, onPlay }) {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-800 to-deep">
-            <span className="text-4xl">🎬</span>
+            <Icon name="film" size={40} className="text-white/40" />
           </div>
         )}
         {/* 재생 버튼 오버레이 */}

@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { videoCategories, videos } from '../data/videos'
 import VideoCard from '../components/VideoCard'
 import VideoModal from '../components/VideoModal'
+import Icon from '../components/Icon'
 
 const VIDEOS_PER_PAGE = 6 // 2열 × 3행
 
@@ -31,7 +32,7 @@ export default function Videos() {
             <span className="text-white">교육 콘텐츠</span>
           </div>
           <div className="flex items-end gap-4">
-            <span className="text-5xl">{currentCat.emoji}</span>
+            <Icon name={currentCat.icon} size={48} className="text-white/70 shrink-0" />
             <div>
               <h1 className="text-3xl font-extrabold text-white md:text-4xl">{currentCat.label}</h1>
               <p className="mt-1 text-white/70">{currentCat.desc}</p>
@@ -55,7 +56,7 @@ export default function Videos() {
                   cat.key === category ? 'tab-btn-active' : 'tab-btn-inactive',
                 ].join(' ')}
               >
-                <span>{cat.emoji}</span>
+                <Icon name={cat.icon} size={15} className="shrink-0" />
                 {cat.label}
                 <span className="ml-1 rounded-full bg-black/10 px-2 py-0.5 text-xs">
                   {(videos[cat.key] || []).length}
@@ -86,7 +87,7 @@ export default function Videos() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center">
-              <span className="mb-4 text-6xl opacity-30">🎬</span>
+              <Icon name="film" size={56} className="mb-4 text-neutral-300 dark:text-deep-600" />
               <p className="text-lg font-semibold text-neutral-400 dark:text-primary-400">
                 콘텐츠 준비 중입니다
               </p>

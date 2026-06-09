@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { company } from '../data/site'
+import Icon from './Icon'
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
           {/* 브랜드 + 소개 */}
           <div className="max-w-sm">
             <div className="mb-4 flex items-center gap-2">
-              <span className="text-2xl">🐾</span>
+              <Icon name="paw" size={22} className="text-primary-400" />
               <span className="text-xl font-extrabold tracking-tight text-primary-400">
                 {company.name}
               </span>
@@ -61,8 +62,11 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/60 transition hover:text-primary-400"
                 >
-                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-xs">
-                    {s.icon === 'yt' ? '▶' : s.icon === 'ig' ? '📷' : '✍'}
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10">
+                    <Icon
+                      name={s.icon === 'yt' ? 'youtube' : s.icon === 'ig' ? 'instagram' : 'write'}
+                      size={14}
+                    />
                   </span>
                   {s.label}
                 </a>

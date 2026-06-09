@@ -1,18 +1,19 @@
 import { Link } from 'react-router-dom'
 import SubPageLayout from '../components/SubPageLayout'
+import Icon from '../components/Icon'
 
 const partnerTypes = [
-  { icon: '🏥', title: '동물병원 & 수의원', desc: '동물 의료 전문 기관과 함께 검증된 수의학 교육 콘텐츠를 공동 제작합니다.' },
-  { icon: '🤖', title: 'AI & 펫테크 기업', desc: '최신 AI 기술과 펫테크 솔루션을 교육 콘텐츠에 결합하여 시너지를 만듭니다.' },
-  { icon: '🎓', title: '교육 기관', desc: '수의학 및 동물 관련 교육 기관과 체계적인 커리큘럼을 공동 개발합니다.' },
-  { icon: '📦', title: '반려동물 브랜드', desc: '제품 교육 및 올바른 사용법을 전문 콘텐츠로 제작하여 브랜드 가치를 높입니다.' },
+  { icon: 'hospital',   iconColor: 'text-support-500',  title: '동물병원 & 수의원', desc: '동물 의료 전문 기관과 함께 검증된 수의학 교육 콘텐츠를 공동 제작합니다.' },
+  { icon: 'ai',         iconColor: 'text-primary-500',  title: 'AI & 펫테크 기업', desc: '최신 AI 기술과 펫테크 솔루션을 교육 콘텐츠에 결합하여 시너지를 만듭니다.' },
+  { icon: 'graduation', iconColor: 'text-accent',       title: '교육 기관', desc: '수의학 및 동물 관련 교육 기관과 체계적인 커리큘럼을 공동 개발합니다.' },
+  { icon: 'box',        iconColor: 'text-neutral-500',  title: '반려동물 브랜드', desc: '제품 교육 및 올바른 사용법을 전문 콘텐츠로 제작하여 브랜드 가치를 높입니다.' },
 ]
 
 const stats = [
-  { icon: '👥', value: '1,200+', label: '수강생 네트워크' },
-  { icon: '🎬', value: '100+',   label: '교육 콘텐츠' },
-  { icon: '⭐', value: '4.9',    label: '평균 만족도' },
-  { icon: '📱', value: 'iOS·AOS', label: '모바일 앱 제공' },
+  { icon: 'users',  iconColor: 'text-primary-500', value: '1,200+', label: '수강생 네트워크' },
+  { icon: 'video',  iconColor: 'text-primary-500', value: '100+',   label: '교육 콘텐츠' },
+  { icon: 'star',   iconColor: 'text-amber-400',   value: '4.9',    label: '평균 만족도' },
+  { icon: 'mobile', iconColor: 'text-primary-500', value: 'iOS·AOS', label: '모바일 앱 제공' },
 ]
 
 const steps = [
@@ -26,7 +27,8 @@ export default function Partnership() {
   return (
     <SubPageLayout
       breadcrumb={[{ label: '강사 소개', to: '/instructors' }, { label: '파트너십' }]}
-      title="🤝 파트너십"
+      title="파트너십"
+      icon="link"
     >
       {/* 소개 */}
       <div className="mb-14 text-center">
@@ -42,7 +44,7 @@ export default function Partnership() {
       <div className="mb-14 grid grid-cols-2 gap-4 md:grid-cols-4">
         {stats.map(s => (
           <div key={s.label} className="card-base p-6 text-center">
-            <span className="mb-2 block text-3xl">{s.icon}</span>
+            <Icon name={s.icon} size={28} className={`mb-2 mx-auto ${s.iconColor}`} />
             <p className="text-2xl font-extrabold text-primary-600 dark:text-primary-400">{s.value}</p>
             <p className="text-sm text-neutral-500 dark:text-primary-300">{s.label}</p>
           </div>
@@ -55,7 +57,7 @@ export default function Partnership() {
         <div className="grid gap-6 sm:grid-cols-2">
           {partnerTypes.map(p => (
             <div key={p.title} className="card-base flex gap-5 p-6">
-              <span className="shrink-0 text-4xl">{p.icon}</span>
+              <Icon name={p.icon} size={36} className={`shrink-0 ${p.iconColor}`} />
               <div>
                 <h3 className="mb-2 font-bold text-deep dark:text-white">{p.title}</h3>
                 <p className="text-sm leading-relaxed text-neutral-500 dark:text-primary-300">{p.desc}</p>
@@ -87,8 +89,9 @@ export default function Partnership() {
         <p className="mb-6 text-primary-200">
           협력에 관심 있으신 기관 및 기업은 아래 버튼을 통해 제휴 문의를 남겨주세요.
         </p>
-        <Link to="/contact/partnership" className="btn-accent shadow-lg shadow-accent/30">
-          📩 제휴 문의하기 →
+        <Link to="/contact/partnership" className="btn-accent shadow-lg shadow-accent/30 inline-flex items-center gap-2">
+          <Icon name="mail" size={16} className="shrink-0" />
+          제휴 문의하기 →
         </Link>
       </div>
     </SubPageLayout>

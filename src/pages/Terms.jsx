@@ -79,7 +79,8 @@ export default function Terms() {
   return (
     <SubPageLayout
       breadcrumb={[{ label: '이용약관' }]}
-      title="📋 이용약관"
+      title="이용약관"
+      icon="clipboard"
     >
       <div className="mb-8 rounded-2xl bg-primary-50 dark:bg-primary-900/20 p-6">
         <p className="text-sm leading-relaxed text-primary-800 dark:text-primary-200">

@@ -94,17 +94,17 @@ export const heroSlides = [
 
 // 메인 통계
 export const stats = [
-  { value: '1,200+', label: '수강생', icon: '👥' },
-  { value: '100+',   label: '강의 콘텐츠', icon: '🎬' },
-  { value: '8+',     label: '전문 강사', icon: '👨‍🏫' },
-  { value: '4.9',    label: '평균 평점', icon: '⭐' },
+  { value: '1,200+', label: '수강생', icon: 'users' },
+  { value: '100+',   label: '강의 콘텐츠', icon: 'video' },
+  { value: '8+',     label: '전문 강사', icon: 'person' },
+  { value: '4.9',    label: '평균 평점', icon: 'star' },
 ]
 
 // 메인 특징 카드
 export const features = [
   {
     key: 'health',
-    icon: '🐾',
+    icon: 'paw',
     title: '반려동물 헬스케어',
     desc: '수의사와 전문가가 직접 제작한 건강관리 콘텐츠로 소중한 반려동물을 더욱 건강하게 돌보세요.',
     color: 'support',
@@ -112,7 +112,7 @@ export const features = [
   },
   {
     key: 'ai',
-    icon: '🤖',
+    icon: 'ai',
     title: 'AI 활용 교육',
     desc: '최신 AI 기술을 활용한 반려동물 건강 모니터링과 스마트 케어 방법을 체계적으로 배울 수 있습니다.',
     color: 'primary',
@@ -120,7 +120,7 @@ export const features = [
   },
   {
     key: 'literacy',
-    icon: '📖',
+    icon: 'book',
     title: 'AI 리터러시',
     desc: 'AI를 올바르게 이해하고 반려동물 케어에 스마트하게 활용하는 방법을 전문가가 안내합니다.',
     color: 'lavender',
@@ -128,7 +128,7 @@ export const features = [
   },
   {
     key: 'behavior',
-    icon: '🎯',
+    icon: 'target',
     title: '행동 교정',
     desc: '전문 훈련사와 함께하는 체계적인 행동 교정 프로그램으로 더 행복한 반려동물 생활을 만드세요.',
     color: 'accent',

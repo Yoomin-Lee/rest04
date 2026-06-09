@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Icon from './Icon'
 
 // YouTube 영상 모달 — 외부 클릭 또는 ESC로 닫기
 export default function VideoModal({ video, onClose }) {
@@ -47,7 +48,7 @@ export default function VideoModal({ video, onClose }) {
         <div className="yt-embed-wrap overflow-hidden rounded-xl shadow-2xl">
           {isPlaceholder ? (
             <div className="flex h-full min-h-[240px] flex-col items-center justify-center gap-4 bg-deep text-white">
-              <span className="text-5xl">🎬</span>
+              <Icon name="film" size={48} className="text-white/30" />
               <p className="text-center text-sm opacity-70">
                 videos.js에서 실제 YouTube 영상 ID로 교체하세요
               </p>
