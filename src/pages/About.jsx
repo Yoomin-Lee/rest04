@@ -58,29 +58,29 @@ function Vision() {
   const pillars = [
     {
       icon: 'hospital',
-      iconColor: 'text-support-500',
-      bg: 'bg-support-50 dark:bg-support-900/20',
+      iconColor: 'text-support-600',
+      badgeBg: 'bg-support-100 dark:bg-support-900/50',
       title: '콘텐츠 전문성',
       desc: '모든 교육 콘텐츠는 현직 수의사와 전문 훈련사가 직접 제작·검토합니다. 상업적 목적의 정보를 배제하고 임상에서 검증된 지식만 전달합니다.',
     },
     {
       icon: 'ai',
-      iconColor: 'text-primary-500',
-      bg: 'bg-primary-50 dark:bg-primary-900/20',
+      iconColor: 'text-primary-600',
+      badgeBg: 'bg-primary-100 dark:bg-primary-900/50',
       title: 'AI 기반 개인화',
       desc: 'AI 기술로 보호자의 반려동물 종·나이·건강 상태에 맞는 맞춤형 학습 경로를 제공합니다. 데이터 기반으로 콘텐츠를 지속 개선합니다.',
     },
     {
       icon: 'users',
-      iconColor: 'text-accent',
-      bg: 'bg-accent-50 dark:bg-accent-900/20',
+      iconColor: 'text-accent-600',
+      badgeBg: 'bg-accent-100 dark:bg-accent-900/50',
       title: '커뮤니티 연결',
       desc: '보호자와 전문가가 소통하는 신뢰 기반 커뮤니티를 구축합니다. 혼자 걱정하지 않아도 되는 환경을 만드는 것이 목표입니다.',
     },
     {
       icon: 'heart',
-      iconColor: 'text-red-400',
-      bg: 'bg-red-50 dark:bg-red-900/20',
+      iconColor: 'text-red-500',
+      badgeBg: 'bg-red-100 dark:bg-red-900/40',
       title: '사회적 가치',
       desc: '기초 건강 정보는 누구나 무료로 접근할 수 있어야 합니다. 유기동물 보호 교육 및 취약계층 반려인 지원 프로그램을 운영합니다.',
     },
@@ -193,12 +193,14 @@ function Vision() {
         <p className="section-label mb-6">Strategic Pillars</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {pillars.map(p => (
-            <div key={p.title} className={`rounded-2xl border border-transparent p-6 ${p.bg}`}>
+            <div key={p.title} className="card-base p-6">
               <div className="mb-3 flex items-center gap-3">
-                <Icon name={p.icon} size={22} className={p.iconColor} />
+                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${p.badgeBg}`}>
+                  <Icon name={p.icon} size={20} className={p.iconColor} />
+                </div>
                 <h4 className="font-bold text-deep dark:text-white">{p.title}</h4>
               </div>
-              <p className="text-sm leading-relaxed text-neutral-600 dark:text-primary-200">{p.desc}</p>
+              <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">{p.desc}</p>
             </div>
           ))}
         </div>
