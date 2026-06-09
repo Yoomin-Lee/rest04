@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { nav, company } from '../data/site'
 import ThemeToggle from './ThemeToggle'
 import Icon from './Icon'
@@ -29,34 +29,29 @@ export default function Header() {
   }, [location])
 
   const isHome = location.pathname === '/'
+  const solid = scrolled || !isHome
 
   return (
     <>
       <header
         className={[
           'sticky top-0 z-50 w-full transition-all duration-300',
-          scrolled || !isHome
-            ? 'bg-white/95 shadow-sm backdrop-blur-md dark:bg-deep-900/95'
-            : 'bg-transparent',
+          solid ? 'bg-white/95 shadow-sm backdrop-blur-md dark:bg-deep-900/95' : 'bg-transparent',
         ].join(' ')}
-        onMouseLeave={() => setHovered(null)}
       >
         <div className="mx-auto flex h-16 max-w-container items-center justify-between px-4 md:px-8 lg:px-16">
+
           {/* 로고 */}
           <Link to="/" className="flex items-center gap-2">
             <Icon
               name="paw"
               size={24}
-              className={scrolled || !isHome ? 'text-primary-600 dark:text-primary-400' : 'text-white'}
+              className={solid ? 'text-primary-600 dark:text-primary-400' : 'text-white'}
             />
-            <span
-              className={[
-                'text-xl font-extrabold tracking-tight transition',
-                scrolled || !isHome
-                  ? 'text-primary-700 dark:text-primary-400'
-                  : 'text-white drop-shadow',
-              ].join(' ')}
-            >
+            <span className={[
+              'text-xl font-extrabold tracking-tight transition',
+              solid ? 'text-primary-700 dark:text-primary-400' : 'text-white drop-shadow',
+            ].join(' ')}>
               {company.name}
             </span>
           </Link>
@@ -68,30 +63,48 @@ export default function Header() {
               return (
                 <li
                   key={item.label}
-                  className="group relative flex items-center"
+                  className="relative flex items-center"
                   onMouseEnter={() => setHovered(item.label)}
+                  onMouseLeave={() => setHovered(null)}
                 >
                   <Link
                     to={item.to}
                     className={[
                       'px-5 py-5 text-[15px] font-bold transition',
                       active
-                        ? scrolled || !isHome
-                          ? 'text-primary-600 dark:text-primary-400'
-                          : 'text-white'
-                        : scrolled || !isHome
-                        ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-400'
-                        : 'text-white/80 hover:text-white',
+                        ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-white'
+                        : solid
+                          ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-400'
+                          : 'text-white/80 hover:text-white',
                     ].join(' ')}
                   >
                     {item.label}
                   </Link>
-                  {/* active 밑줄 인디케이터 */}
+
+                  {/* active 밑줄 */}
                   {active && (
                     <span className={[
                       'absolute bottom-0 left-5 right-5 h-0.5 rounded-full',
-                      scrolled || !isHome ? 'bg-primary-600 dark:bg-primary-400' : 'bg-white',
+                      solid ? 'bg-primary-600 dark:bg-primary-400' : 'bg-white',
                     ].join(' ')} />
+                  )}
+
+                  {/* 드롭다운 — 해당 nav 항목 바로 아래 */}
+                  {hovered === item.label && (
+                    <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1">
+                      <ul className="min-w-[10rem] overflow-hidden rounded-xl border border-neutral-100 bg-white py-1.5 shadow-lg dark:border-deep-700 dark:bg-deep-800">
+                        {item.children.map(c => (
+                          <li key={c.label}>
+                            <Link
+                              to={c.to}
+                              className="block whitespace-nowrap px-5 py-2.5 text-sm text-neutral-600 transition hover:bg-primary-50 hover:text-primary-600 dark:text-primary-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </li>
               )
@@ -104,45 +117,13 @@ export default function Header() {
             <button
               type="button"
               aria-label="메뉴 열기"
-              className={[
-                'flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden',
-              ].join(' ')}
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
               onClick={() => setMobileOpen(true)}
             >
-              <span className={`h-0.5 w-6 transition ${scrolled || !isHome ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${scrolled || !isHome ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${scrolled || !isHome ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
             </button>
-          </div>
-        </div>
-
-        {/* 데스크탑 메가 드롭다운 */}
-        <div
-          className={[
-            'hidden overflow-hidden border-b border-neutral-100 dark:border-deep-700 bg-white/98 dark:bg-deep-900/98 backdrop-blur-md transition-all duration-200 lg:block',
-            hovered ? 'max-h-48 opacity-100' : 'max-h-0 border-b-0 opacity-0',
-          ].join(' ')}
-        >
-          <div className="mx-auto flex max-w-container justify-end px-16 py-2">
-            {nav.map(item => (
-              <ul
-                key={item.label}
-                className="flex w-40 flex-col gap-2 py-5"
-                onMouseEnter={() => setHovered(item.label)}
-              >
-                {hovered === item.label &&
-                  item.children.map(c => (
-                    <li key={c.label}>
-                      <Link
-                        to={c.to}
-                        className="block text-center text-sm text-neutral-600 dark:text-primary-300 transition hover:font-semibold hover:text-primary-600 dark:hover:text-primary-400"
-                      >
-                        {c.label}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            ))}
           </div>
         </div>
       </header>
@@ -183,42 +164,43 @@ export default function Header() {
               {nav.map(item => {
                 const active = isNavActive(item, location.pathname)
                 return (
-                <li key={item.label} className="border-b border-neutral-100 dark:border-deep-700 last:border-0">
-                  <button
-                    type="button"
-                    className={[
-                      'flex w-full items-center justify-between py-4 text-base font-bold transition',
-                      active ? 'text-primary-600 dark:text-primary-400' : 'text-neutral-900 dark:text-white',
-                    ].join(' ')}
-                    onClick={() =>
-                      setMobileExpanded(mobileExpanded === item.label ? null : item.label)
-                    }
-                  >
-                    {item.label}
-                    <svg
-                      width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-                      className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`}
+                  <li key={item.label} className="border-b border-neutral-100 dark:border-deep-700 last:border-0">
+                    <button
+                      type="button"
+                      className={[
+                        'flex w-full items-center justify-between py-4 text-base font-bold transition',
+                        active ? 'text-primary-600 dark:text-primary-400' : 'text-neutral-900 dark:text-white',
+                      ].join(' ')}
+                      onClick={() =>
+                        setMobileExpanded(mobileExpanded === item.label ? null : item.label)
+                      }
                     >
-                      <path d="m6 9 6 6 6-6" />
-                    </svg>
-                  </button>
-                  {mobileExpanded === item.label && (
-                    <ul className="mb-3 flex flex-col gap-1 pl-4">
-                      {item.children.map(c => (
-                        <li key={c.label}>
-                          <Link
-                            to={c.to}
-                            className="block py-2 text-sm text-neutral-500 dark:text-primary-300 hover:text-primary-600 dark:hover:text-primary-400"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            {c.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              )})}
+                      {item.label}
+                      <svg
+                        width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                        className={`transition-transform ${mobileExpanded === item.label ? 'rotate-180' : ''}`}
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    {mobileExpanded === item.label && (
+                      <ul className="mb-3 flex flex-col gap-1 pl-4">
+                        {item.children.map(c => (
+                          <li key={c.label}>
+                            <Link
+                              to={c.to}
+                              className="block py-2 text-sm text-neutral-500 dark:text-primary-300 hover:text-primary-600 dark:hover:text-primary-400"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {c.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
 
             {/* 하단 CTA */}
