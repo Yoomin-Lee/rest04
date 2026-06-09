@@ -1,184 +1,178 @@
 // ============================================================
-// 사이트 전역 데이터 — 회사 정보 / 네비게이션 / 사업 / 프로젝트
-// 템플릿 사용 시 이 파일만 수정하면 대부분의 내용이 반영됩니다.
+// PawEdu — 반려동물 스마트 헬스케어 교육 플랫폼
+// 사이트 전역 데이터 — 이 파일만 수정하면 대부분의 내용이 반영됩니다
 // ============================================================
 
 export const company = {
-  name: 'CHINHUNG',
-  nameKo: '진흥기업',
-  fullName: 'CHINHUNG INTERNATIONAL INC.',
-  copyright: '© 2026 CHINHUNG INTERNATIONAL INC. All rights reserved.',
+  name: 'PawEdu',
+  nameKo: '포에듀',
+  fullName: '김예진 동물병원',
+  tagline: '반려동물과 함께하는 스마트 헬스케어 교육',
+  taglineSub: '김예진 동물병원이 직접 운영하는 반려동물 전문 교육 플랫폼',
+  copyright: '© 2026 김예진 동물병원. All rights reserved.',
   intro: [
-    '진흥기업은 단순한 건설을 넘어 사람이 머무는 공간과 그 공간을 둘러싼 환경까지 함께 설계합니다.',
-    '우리는 삶의 질을 높이는 구조를 고민하며 도시와 자연이 균형을 이루는 지속 가능한 기반을 만들어갑니다. 기술과 책임, 그리고 배려를 더해 조화로운 미래를 완성합니다.',
+    '김예진 동물병원이 직접 만들고 운영하는 반려동물 헬스케어 전문 교육 플랫폼입니다.',
+    'AI 기술과 수의학 전문 지식을 결합하여, 반려동물 보호자가 더 나은 돌봄을 실천할 수 있도록 돕습니다.',
   ],
   offices: [
     {
-      label: '서울지사',
-      address: '서울특별시 용산구 후암로 27 (후암동)',
-      tel: '02-772-1200',
-      fax: '02-754-2972',
-    },
-    {
-      label: '본사',
-      address: '인천광역시 연수구 컨벤시아대로 69 807호',
-      tel: '032-432-0658',
-      fax: '032-432-0659',
+      label: '본원',
+      address: '서울특별시 강남구 테헤란로 123 김예진빌딩 1F',
+      tel: '02-000-0000',
+      fax: '02-000-0001',
+      email: 'info@pawedu.kr',
     },
   ],
-  familySites: [
-    { name: '효성그룹', url: 'https://www.hyosung.com' },
-    { name: '효성중공업', url: 'https://www.hyosungheavyindustries.com' },
-    { name: '효성굿스프링스', url: 'https://www.hsgoodsprings.com' },
-    { name: '효성티엔씨', url: 'https://www.hyosungtnc.com' },
-    { name: '효성화학', url: 'https://www.hyosungchemical.com' },
+  sns: [
+    { label: 'YouTube', url: 'https://youtube.com/@pawedu', icon: 'yt' },
+    { label: 'Instagram', url: 'https://instagram.com/pawedu', icon: 'ig' },
+    { label: 'Blog', url: 'https://blog.naver.com/pawedu', icon: 'blog' },
   ],
   footerLinks: [
-    { label: '제보센터', to: '/report' },
-    { label: '법적고지', to: '/legal' },
     { label: '개인정보처리방침', to: '/privacy', strong: true },
+    { label: '이용약관', to: '/terms' },
+    { label: '문의하기', to: '/contact' },
   ],
 }
 
-// 상단 GNB — 대메뉴 + 하위메뉴
+// 상단 GNB
 export const nav = [
   {
     label: '회사소개',
     to: '/about',
     children: [
       { label: 'CEO 인사말', to: '/about/greetings' },
-      { label: '비전/가치', to: '/about/vision' },
+      { label: '비전/미션', to: '/about/vision' },
       { label: '연혁', to: '/about/history' },
-      { label: '브랜드소개', to: '/about/brand' },
     ],
   },
   {
-    label: '사업소개',
-    to: '/business/housing',
+    label: '교육 콘텐츠',
+    to: '/videos/ai',
     children: [
-      { label: '주택사업', to: '/business/housing' },
-      { label: '건축사업', to: '/business/building' },
-      { label: '토목사업', to: '/business/civil' },
-      { label: '플랜트사업', to: '/business/plant' },
-      { label: '해외사업', to: '/business/global' },
+      { label: 'AI 교육', to: '/videos/ai' },
+      { label: 'AI 리터러시', to: '/videos/literacy' },
+      { label: '반려동물 건강', to: '/videos/health' },
+      { label: '행동 교정', to: '/videos/behavior' },
     ],
   },
   {
-    label: '지속가능경영',
-    to: '/sustainability/ethical',
+    label: '강사 소개',
+    to: '/instructors',
     children: [
-      { label: '윤리경영', to: '/sustainability/ethical' },
-      { label: '안전경영', to: '/sustainability/safety' },
-      { label: '품질경영', to: '/sustainability/quality' },
-      { label: '사회공헌', to: '/sustainability/csr' },
+      { label: '전문가 소개', to: '/instructors' },
+      { label: '파트너십', to: '/partnership' },
     ],
   },
   {
-    label: '투자정보',
-    to: '/investment',
+    label: '문의하기',
+    to: '/contact',
     children: [
-      { label: '재무정보', to: '/investment' },
-      { label: '공시정보', to: '/investment' },
-      { label: '공고', to: '/investment' },
-    ],
-  },
-  {
-    label: '고객센터',
-    to: '/support',
-    children: [
-      { label: '공지사항', to: '/support' },
-      { label: '문의하기', to: '/support' },
-    ],
-  },
-  {
-    label: '인재채용',
-    to: '/recruit',
-    children: [
-      { label: '인재상', to: '/recruit' },
-      { label: '채용공고', to: '/recruit' },
+      { label: '고객 문의', to: '/contact' },
+      { label: '제휴 문의', to: '/contact/partnership' },
     ],
   },
 ]
 
-// 메인 — Our Business 카드
-export const businessCards = [
+// 메인 히어로 슬라이드
+export const heroSlides = [
   {
-    key: 'housing',
-    title: '주택 사업',
-    desc: '고객의 라이프스타일을 반영한 프리미엄 주거 공간으로 주거 문화를 선도합니다.',
-    to: '/business/housing',
+    label: 'AI로 더 스마트하게',
+    copy: 'AI와 함께하는\n반려동물 헬스케어',
+    sub: '전문가가 만든 동영상 콘텐츠로 반려동물의 건강을 지켜주세요',
+    cta: '교육 콘텐츠 보기',
+    ctaTo: '/videos/ai',
   },
   {
-    key: 'building',
-    title: '건축 사업',
-    desc: '첨단 기술과 예술적 감각이 조화된 건축물로 도시의 스카이라인을 바꿉니다.',
-    to: '/business/building',
-  },
-  {
-    key: 'civil',
-    title: '토목 사업',
-    desc: '국가 인프라 구축의 핵심 역할을 수행하며 안전하고 편리한 생활 기반을 조성합니다.',
-    to: '/business/civil',
-  },
-  {
-    key: 'plant',
-    title: '플랜트 사업',
-    desc: '고도의 기술력이 요구되는 산업 기반 시설을 성공적으로 수행합니다.',
-    to: '/business/plant',
-  },
-  {
-    key: 'global',
-    title: '해외 사업',
-    desc: '축적된 기술력과 노하우를 바탕으로 글로벌 시장에 진출하여 역량을 입증합니다.',
-    to: '/business/global',
+    label: '전문 수의사와 함께',
+    copy: '건강한 반려동물,\n행복한 보호자',
+    sub: '수의사와 AI 전문가가 함께 만든 체계적인 온라인 교육',
+    cta: '무료로 시작하기',
+    ctaTo: '/videos/health',
   },
 ]
 
-// 사업소개 페이지 메타 (탭 / 카테고리)
-export const businessPages = {
-  housing: {
-    title: '주택사업',
-    headLabel: 'Housing',
-    categories: ['아파트', '주상복합', '오피스텔', '도시정비'],
-  },
-  building: {
-    title: '건축사업',
-    headLabel: 'Building',
-    categories: ['업무시설', '상업시설', '교육/문화', '의료시설'],
-  },
-  civil: {
-    title: '토목사업',
-    headLabel: 'Civil',
-    categories: ['도로/포장', '지하철/철도', '교량/터널/기타', '부지조성', '보안시설'],
-  },
-  plant: {
-    title: '플랜트사업',
-    headLabel: 'Plant',
-    categories: ['발전', '환경', '산업설비'],
-  },
-  global: {
-    title: '해외사업',
-    headLabel: 'Global',
-    categories: ['아시아', '중동', '기타'],
-  },
-}
-
-// 토목사업 — 도로/포장 카테고리 실적 (소스 데이터 반영, 이미지는 플레이스홀더)
-export const civilProjects = [
-  { title: '경부선 화성동탄 방음시설 설치공사', period: '2018.06 ~ 2019.11' },
-  { title: '보령-부여 도로건설공사', period: '2016.07 ~ 2023.12' },
-  { title: '분당~수서간 도시고속도로 소음저감시설 설치공사', period: '2015.07 ~ 2023.11' },
-  { title: '진접-내촌 도로건설공사 2공구', period: '2014.01 ~ 2020.12' },
-  { title: '명지지구진입도로 개설공사', period: '2013.07 ~ 2016.09' },
-  { title: '장지삼거리 입체화시설 건설공사', period: '2012.01 ~ 2016.12' },
-  { title: '충남도청신도시개발사업 2구역 지하차도 건설공사', period: '2010.07 ~ 2012.09' },
-  { title: '고속도로 제65호선 주문진 ~ 속초간 4공구', period: '2009.01 ~ 2016.12' },
+// 메인 통계
+export const stats = [
+  { value: '1,200+', label: '수강생', icon: '👥' },
+  { value: '100+',   label: '강의 콘텐츠', icon: '🎬' },
+  { value: '8+',     label: '전문 강사', icon: '👨‍🏫' },
+  { value: '4.9',    label: '평균 평점', icon: '⭐' },
 ]
 
-// 메인 공지
+// 메인 특징 카드
+export const features = [
+  {
+    key: 'health',
+    icon: '🐾',
+    title: '반려동물 헬스케어',
+    desc: '수의사와 전문가가 직접 제작한 건강관리 콘텐츠로 소중한 반려동물을 더욱 건강하게 돌보세요.',
+    color: 'support',
+    to: '/videos/health',
+  },
+  {
+    key: 'ai',
+    icon: '🤖',
+    title: 'AI 활용 교육',
+    desc: '최신 AI 기술을 활용한 반려동물 건강 모니터링과 스마트 케어 방법을 체계적으로 배울 수 있습니다.',
+    color: 'primary',
+    to: '/videos/ai',
+  },
+  {
+    key: 'literacy',
+    icon: '📖',
+    title: 'AI 리터러시',
+    desc: 'AI를 올바르게 이해하고 반려동물 케어에 스마트하게 활용하는 방법을 전문가가 안내합니다.',
+    color: 'lavender',
+    to: '/videos/literacy',
+  },
+  {
+    key: 'behavior',
+    icon: '🎯',
+    title: '행동 교정',
+    desc: '전문 훈련사와 함께하는 체계적인 행동 교정 프로그램으로 더 행복한 반려동물 생활을 만드세요.',
+    color: 'accent',
+    to: '/videos/behavior',
+  },
+]
+
+// 강사 소개
+export const instructors = [
+  {
+    name: '김수연',
+    title: '수의학 박사',
+    spec: '반려동물 내과 & 영양 전문',
+    lectures: 28,
+    rating: 4.9,
+  },
+  {
+    name: '이준혁',
+    title: 'AI 연구원',
+    spec: '펫테크 & AI 헬스케어',
+    lectures: 22,
+    rating: 4.8,
+  },
+  {
+    name: '박민지',
+    title: '동물 행동 전문가',
+    spec: '반려동물 행동교정 & 훈련',
+    lectures: 30,
+    rating: 5.0,
+  },
+  {
+    name: '최동현',
+    title: '수의사',
+    spec: '피부과 & 예방의학',
+    lectures: 20,
+    rating: 4.9,
+  },
+]
+
+// 공지사항
 export const notices = [
-  { id: 9, title: '진흥기업 홈페이지 리뉴얼 오픈 안내', date: '2026.05.27' },
-  { id: 8, title: '2026년 상반기 신입/경력사원 채용 공고', date: '2026.05.20' },
-  { id: 7, title: '진흥기업, ISO 9001 품질경영시스템 인증 갱신', date: '2026.05.05' },
-  { id: 6, title: '해링턴 플레이스 신규 분양 일정 안내', date: '2026.04.18' },
+  { id: 5, title: '2026 여름 특강 — "AI와 반려동물 건강관리" 오픈', date: '2026.06.01', isNew: true },
+  { id: 4, title: '행동교정 마스터 클래스 신규 콘텐츠 업데이트 안내', date: '2026.05.20', isNew: true },
+  { id: 3, title: 'PawEdu 앱 출시 안내 (iOS / Android)', date: '2026.05.10' },
+  { id: 2, title: '수의사 Q&A 라이브 세션 참여 안내', date: '2026.04.28' },
+  { id: 1, title: 'PawEdu 베타 서비스 오픈 기념 이벤트', date: '2026.04.01' },
 ]
