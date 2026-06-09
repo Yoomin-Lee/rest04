@@ -63,6 +63,20 @@ function ContactForm({ type }) {
 
   return (
     <form onSubmit={submit} className="space-y-5">
+      {type === 'partnership' && (
+        <div className="flex items-center gap-4 rounded-xl border border-primary-200 bg-primary-50 px-5 py-4 dark:border-primary-700 dark:bg-primary-900/30">
+          <Icon name="mail" size={20} className="shrink-0 text-primary-600 dark:text-primary-400" />
+          <div>
+            <p className="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest mb-0.5">이메일 직접 문의</p>
+            <a
+              href={`mailto:${company.offices[0].email}`}
+              className="text-sm font-semibold text-primary-700 underline underline-offset-2 hover:text-primary-900 dark:text-primary-300 dark:hover:text-white transition"
+            >
+              {company.offices[0].email}
+            </a>
+          </div>
+        </div>
+      )}
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label className="mb-1.5 block text-sm font-semibold text-neutral-700 dark:text-primary-200">
