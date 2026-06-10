@@ -49,7 +49,6 @@ export function AuthProvider({ children }) {
       provider: 'kakao',
       options: {
         redirectTo: `${window.location.origin}/rest04/`,
-        scopes: 'profile_nickname profile_image',
       },
     })
     return { data, error }
