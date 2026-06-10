@@ -23,7 +23,7 @@ export default function BoardEdit() {
   }, [id])
 
   async function fetchPost() {
-    const { data } = await supabase.from('posts').select('*').eq('id', id).single()
+    const { data } = await supabase.from('pawedu_posts').select('*').eq('id', id).single()
     if (!data || data.user_id !== user?.id) {
       navigate('/board')
       return
@@ -33,7 +33,7 @@ export default function BoardEdit() {
   }
 
   async function fetchFiles() {
-    const { data } = await supabase.from('post_files').select('*').eq('post_id', id)
+    const { data } = await supabase.from('pawedu_post_files').select('*').eq('post_id', id)
     setExistingFiles(data || [])
   }
 
@@ -67,7 +67,7 @@ export default function BoardEdit() {
     setSaving(true)
     try {
       await supabase
-        .from('posts')
+        .from('pawedu_posts')
         .update({ title: form.title.trim(), content: form.content.trim(), updated_at: new Date().toISOString() })
         .eq('id', id)
 
@@ -75,17 +75,17 @@ export default function BoardEdit() {
       for (const fileId of deleteFileIds) {
         const f = existingFiles.find(f => f.id === fileId)
         if (f) {
-          await supabase.storage.from('post-files').remove([f.file_path])
-          await supabase.from('post_files').delete().eq('id', fileId)
+          await supabase.storage.from('pawedu-files').remove([f.file_path])
+          await supabase.from('pawedu_post_files').delete().eq('id', fileId)
         }
       }
 
       // 새 파일 업로드
       for (const file of newFiles) {
         const filePath = `${user.id}/${id}/${Date.now()}_${file.name}`
-        const { error: uploadError } = await supabase.storage.from('post-files').upload(filePath, file)
+        const { error: uploadError } = await supabase.storage.from('pawedu-files').upload(filePath, file)
         if (!uploadError) {
-          await supabase.from('post_files').insert({
+          await supabase.from('pawedu_post_files').insert({
             post_id: Number(id),
             user_id: user.id,
             file_name: file.name,

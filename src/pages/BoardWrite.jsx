@@ -51,7 +51,7 @@ export default function BoardWrite() {
     try {
       // 게시글 저장
       const { data: post, error: postError } = await supabase
-        .from('posts')
+        .from('pawedu_posts')
         .insert({ title: form.title.trim(), content: form.content.trim(), user_id: user.id })
         .select()
         .single()
@@ -62,11 +62,11 @@ export default function BoardWrite() {
       for (const file of files) {
         const filePath = `${user.id}/${post.id}/${Date.now()}_${file.name}`
         const { error: uploadError } = await supabase.storage
-          .from('post-files')
+          .from('pawedu-files')
           .upload(filePath, file)
 
         if (!uploadError) {
-          await supabase.from('post_files').insert({
+          await supabase.from('pawedu_post_files').insert({
             post_id: post.id,
             user_id: user.id,
             file_name: file.name,

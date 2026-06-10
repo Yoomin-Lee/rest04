@@ -18,13 +18,13 @@ export default function BoardDetail() {
     fetchPost()
     fetchFiles()
     fetchComments()
-    supabase.rpc('increment_post_views', { post_id: Number(id) })
+    supabase.rpc('pawedu_increment_post_views', { post_id: Number(id) })
   }, [id])
 
   async function fetchPost() {
     const { data } = await supabase
-      .from('posts')
-      .select('*, profiles(nickname, avatar_url)')
+      .from('pawedu_posts')
+      .select('*, pawedu_profiles(nickname, avatar_url)')
       .eq('id', id)
       .single()
     setPost(data)
@@ -33,7 +33,7 @@ export default function BoardDetail() {
 
   async function fetchFiles() {
     const { data } = await supabase
-      .from('post_files')
+      .from('pawedu_post_files')
       .select('*')
       .eq('post_id', id)
     setFiles(data || [])
@@ -41,8 +41,8 @@ export default function BoardDetail() {
 
   async function fetchComments() {
     const { data } = await supabase
-      .from('comments')
-      .select('*, profiles(nickname, avatar_url)')
+      .from('pawedu_comments')
+      .select('*, pawedu_profiles(nickname, avatar_url)')
       .eq('post_id', id)
       .order('created_at', { ascending: true })
     setComments(data || [])
@@ -52,9 +52,9 @@ export default function BoardDetail() {
     if (!confirm('게시글을 삭제하시겠습니까?')) return
     // 첨부파일 Storage에서도 삭제
     for (const f of files) {
-      await supabase.storage.from('post-files').remove([f.file_path])
+      await supabase.storage.from('pawedu-files').remove([f.file_path])
     }
-    await supabase.from('posts').delete().eq('id', id)
+    await supabase.from('pawedu_posts').delete().eq('id', id)
     navigate('/board')
   }
 
@@ -62,7 +62,7 @@ export default function BoardDetail() {
     e.preventDefault()
     if (!commentText.trim()) return
     setSubmitting(true)
-    await supabase.from('comments').insert({ post_id: Number(id), user_id: user.id, content: commentText.trim() })
+    await supabase.from('pawedu_comments').insert({ post_id: Number(id), user_id: user.id, content: commentText.trim() })
     setCommentText('')
     await fetchComments()
     setSubmitting(false)
@@ -70,7 +70,7 @@ export default function BoardDetail() {
 
   async function handleCommentDelete(commentId) {
     if (!confirm('댓글을 삭제하시겠습니까?')) return
-    await supabase.from('comments').delete().eq('id', commentId)
+    await supabase.from('pawedu_comments').delete().eq('id', commentId)
     await fetchComments()
   }
 
@@ -99,7 +99,7 @@ export default function BoardDetail() {
         <div className="flex items-center justify-between text-sm text-gray-400">
           <div className="flex items-center gap-3">
             <span className="font-medium text-gray-600 dark:text-gray-300">
-              {post.profiles?.nickname || '알 수 없음'}
+              {post.pawedu_profiles?.nickname || '알 수 없음'}
             </span>
             <span>{new Date(post.created_at).toLocaleString('ko-KR')}</span>
             <span>조회 {post.views}</span>
@@ -138,7 +138,7 @@ export default function BoardDetail() {
           <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">첨부파일</h3>
           <ul className="space-y-2">
             {files.map(f => {
-              const { data } = supabase.storage.from('post-files').getPublicUrl(f.file_path)
+              const { data } = supabase.storage.from('pawedu-files').getPublicUrl(f.file_path)
               return (
                 <li key={f.id}>
                   <a
@@ -176,7 +176,7 @@ export default function BoardDetail() {
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    {c.profiles?.nickname || '알 수 없음'}
+                    {c.pawedu_profiles?.nickname || '알 수 없음'}
                   </span>
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-gray-400">

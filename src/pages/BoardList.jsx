@@ -25,8 +25,8 @@ export default function BoardList() {
     const to = from + PAGE_SIZE - 1
 
     let query = supabase
-      .from('posts')
-      .select('id, title, created_at, views, user_id, profiles(nickname)', { count: 'exact' })
+      .from('pawedu_posts')
+      .select('id, title, created_at, views, user_id, pawedu_profiles(nickname)', { count: 'exact' })
       .order('created_at', { ascending: false })
       .range(from, to)
 
@@ -112,7 +112,7 @@ export default function BoardList() {
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-gray-500 dark:text-gray-400">
-                  {post.profiles?.nickname || '알 수 없음'}
+                  {post.pawedu_profiles?.nickname || '알 수 없음'}
                 </td>
                 <td className="px-4 py-3 text-gray-500 dark:text-gray-400">
                   {new Date(post.created_at).toLocaleDateString('ko-KR')}
