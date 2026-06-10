@@ -13,6 +13,12 @@ import Partnership from './pages/Partnership'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import SimplePage from './pages/SimplePage'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import BoardList from './pages/BoardList'
+import BoardDetail from './pages/BoardDetail'
+import BoardWrite from './pages/BoardWrite'
+import BoardEdit from './pages/BoardEdit'
 
 export default function App() {
   return (
@@ -42,6 +48,16 @@ export default function App() {
           {/* 정책 */}
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+
+          {/* 인증 */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* 게시판 */}
+          <Route path="/board" element={<BoardList />} />
+          <Route path="/board/write" element={<BoardWrite />} />
+          <Route path="/board/:id" element={<BoardDetail />} />
+          <Route path="/board/:id/edit" element={<BoardEdit />} />
 
           <Route path="*" element={<SimplePage title="페이지를 찾을 수 없습니다" />} />
         </Routes>

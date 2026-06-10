@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { nav, company } from '../data/site'
 import ThemeToggle from './ThemeToggle'
 import Icon from './Icon'
+import { useAuth } from '../context/AuthContext'
 
 // nav 항목의 active 여부 — 자식 경로 포함
 function isNavActive(item, pathname) {
@@ -16,6 +17,13 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileExpanded, setMobileExpanded] = useState(null)
   const location = useLocation()
+  const navigate = useNavigate()
+  const { user, profile, signOut } = useAuth()
+
+  async function handleSignOut() {
+    await signOut()
+    navigate('/')
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -111,8 +119,45 @@ export default function Header() {
             })}
           </ul>
 
-          {/* 우측: 다크모드 토글 + 햄버거 */}
+          {/* 우측: 인증 버튼 + 다크모드 토글 + 햄버거 */}
           <div className="flex items-center gap-3">
+            {/* 로그인/로그아웃 (데스크탑) */}
+            <div className="hidden lg:flex items-center gap-2">
+              {user ? (
+                <>
+                  <Link
+                    to="/board"
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                  >
+                    게시판
+                  </Link>
+                  <span className={`text-sm ${solid ? 'text-neutral-500 dark:text-gray-400' : 'text-white/70'}`}>
+                    {profile?.nickname || user.email?.split('@')[0]}
+                  </span>
+                  <button
+                    onClick={handleSignOut}
+                    className="text-sm px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition"
+                  >
+                    로그아웃
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/board"
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                  >
+                    게시판
+                  </Link>
+                  <Link
+                    to="/login"
+                    className="text-sm px-3 py-1.5 rounded-lg bg-primary-600 hover:bg-primary-700 text-white font-medium transition"
+                  >
+                    로그인
+                  </Link>
+                </>
+              )}
+            </div>
             <ThemeToggle />
             <button
               type="button"
@@ -204,15 +249,31 @@ export default function Header() {
             </ul>
 
             {/* 하단 CTA */}
-            <div className="mt-auto border-t border-neutral-100 dark:border-deep-700 p-6">
+            <div className="mt-auto border-t border-neutral-100 dark:border-deep-700 p-6 space-y-3">
               <Link
-                to="/contact"
-                className="btn-primary w-full justify-center"
+                to="/board"
+                className="block text-center w-full py-3 rounded-xl border border-primary-600 text-primary-600 dark:text-primary-400 font-semibold text-sm hover:bg-primary-50 dark:hover:bg-primary-900/20 transition"
                 onClick={() => setMobileOpen(false)}
               >
-                <Icon name="mail" size={16} className="shrink-0" />
-                문의하기
+                게시판
               </Link>
+              {user ? (
+                <button
+                  onClick={() => { handleSignOut(); setMobileOpen(false) }}
+                  className="w-full py-3 rounded-xl bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-semibold text-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+                >
+                  로그아웃 ({profile?.nickname || user.email?.split('@')[0]})
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn-primary w-full justify-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Icon name="mail" size={16} className="shrink-0" />
+                  로그인
+                </Link>
+              )}
             </div>
           </div>
         </div>
