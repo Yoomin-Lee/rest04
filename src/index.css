@@ -94,20 +94,20 @@
 
 /* 냥젤리 커스텀 커서 */
 * {
-  cursor: url('/rest04/cursor.svg') 14 21, auto;
+  cursor: url('/rest04/cursor.svg') 11 17, auto;
 }
 a, a *,
 button, button *,
 .tab-btn, .tab-btn *,
 [role="tab"], [role="tab"] *,
 label[for], label[for] * {
-  cursor: url('/rest04/cursor-purple.svg') 14 21, pointer;
+  cursor: url('/rest04/cursor-purple.svg') 11 17, pointer;
 }
 input[type="text"],
 input[type="email"],
 input[type="search"],
 textarea {
-  cursor: url('/rest04/cursor.svg') 14 21, text;
+  cursor: url('/rest04/cursor.svg') 11 17, text;
 }
 
 /* 커스텀 스크롤바 */
