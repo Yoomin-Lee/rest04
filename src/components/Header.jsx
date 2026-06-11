@@ -44,7 +44,7 @@ export default function Header() {
       <header
         className={[
           'sticky top-0 z-50 w-full transition-all duration-300',
-          solid ? 'bg-white/95 shadow-sm backdrop-blur-md dark:bg-deep-900/95' : 'bg-transparent',
+          solid ? 'bg-white/95 shadow-sm backdrop-blur-md dark:bg-deep-900/95' : 'bg-deep-950/50 backdrop-blur-sm',
         ].join(' ')}
       >
         <div className="mx-auto flex h-16 max-w-container items-center justify-between px-4 md:px-8 lg:px-16">
