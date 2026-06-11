@@ -96,11 +96,11 @@
 * {
   cursor: url('/rest04/cursor.svg') 14 21, auto;
 }
-a,
-button,
-.tab-btn,
-[role="tab"],
-label[for] {
+a, a *,
+button, button *,
+.tab-btn, .tab-btn *,
+[role="tab"], [role="tab"] *,
+label[for], label[for] * {
   cursor: url('/rest04/cursor-purple.svg') 14 21, pointer;
 }
 input[type="text"],
