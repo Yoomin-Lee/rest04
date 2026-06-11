@@ -118,10 +118,10 @@ function Stats() {
 // ── 특징 카드 ──────────────────────────────────────────────
 function Features() {
   const colorMap = {
-    support:  { bg: 'bg-support-50 dark:bg-support-700/20',  icon: 'text-support-600 dark:text-support-400',  badge: 'bg-support-100 text-support-700 dark:bg-support-900/50 dark:text-support-300' },
-    primary:  { bg: 'bg-primary-50 dark:bg-primary-900/20',  icon: 'text-primary-600 dark:text-primary-400',  badge: 'bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300' },
-    lavender: { bg: 'bg-primary-50 dark:bg-primary-900/20',  icon: 'text-primary-500 dark:text-primary-300',  badge: 'bg-primary-100 text-primary-700 dark:bg-primary-900/50 dark:text-primary-300' },
-    accent:   { bg: 'bg-accent-50 dark:bg-accent-700/20',   icon: 'text-accent-600 dark:text-accent-400',   badge: 'bg-accent-100 text-accent-700 dark:bg-accent-900/50 dark:text-accent-300' },
+    support:  { bg: 'bg-support-50 dark:bg-support-700/20',  icon: 'text-support-600 dark:text-support-400',  badge: 'bg-support-600 text-white dark:bg-support-500 dark:text-white' },
+    primary:  { bg: 'bg-primary-50 dark:bg-primary-900/20',  icon: 'text-primary-600 dark:text-primary-400',  badge: 'bg-primary-600 text-white dark:bg-primary-500 dark:text-white' },
+    lavender: { bg: 'bg-primary-50 dark:bg-primary-900/20',  icon: 'text-primary-500 dark:text-primary-300',  badge: 'bg-primary-500 text-white dark:bg-primary-400 dark:text-white' },
+    accent:   { bg: 'bg-accent-50 dark:bg-accent-700/20',   icon: 'text-accent-600 dark:text-accent-400',   badge: 'bg-accent-600 text-white dark:bg-accent-500 dark:text-white' },
   }
 
   return (
