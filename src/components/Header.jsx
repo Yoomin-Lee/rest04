@@ -44,7 +44,7 @@ export default function Header() {
       <header
         className={[
           'sticky top-0 z-50 w-full transition-all duration-300',
-          solid ? 'bg-white shadow-sm dark:bg-deep-900/95 dark:backdrop-blur-md' : 'bg-deep-950/50 backdrop-blur-sm',
+          solid ? 'bg-white shadow-sm dark:bg-deep-900/95 dark:backdrop-blur-md' : 'bg-white dark:bg-deep-950/50 dark:backdrop-blur-sm',
         ].join(' ')}
       >
         <div className="mx-auto flex h-16 max-w-container items-center justify-between px-4 md:px-8 lg:px-16">
@@ -54,11 +54,11 @@ export default function Header() {
             <Icon
               name="paw"
               size={24}
-              className={solid ? 'text-primary-600 dark:text-primary-400' : 'text-white'}
+              className={solid ? 'text-primary-600 dark:text-primary-400' : 'text-primary-600 dark:text-white'}
             />
             <span className={[
               'text-xl font-extrabold tracking-tight transition',
-              solid ? 'text-primary-700 dark:text-primary-400' : 'text-white drop-shadow',
+              solid ? 'text-primary-700 dark:text-primary-400' : 'text-primary-700 dark:text-white dark:drop-shadow',
             ].join(' ')}>
               {company.name}
             </span>
@@ -80,10 +80,10 @@ export default function Header() {
                     className={[
                       'px-5 py-5 text-[15px] font-bold transition',
                       active
-                        ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-white'
+                        ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-primary-600 dark:text-white'
                         : solid
                           ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300 dark:hover:text-primary-400'
-                          : 'text-white/80 hover:text-white',
+                          : 'text-primary-700 hover:text-primary-500 dark:text-white/80 dark:hover:text-white',
                     ].join(' ')}
                   >
                     {item.label}
@@ -93,7 +93,7 @@ export default function Header() {
                   {active && (
                     <span className={[
                       'absolute bottom-0 left-5 right-5 h-0.5 rounded-full',
-                      solid ? 'bg-primary-600 dark:bg-primary-400' : 'bg-white',
+                      solid ? 'bg-primary-600 dark:bg-primary-400' : 'bg-primary-600 dark:bg-white',
                     ].join(' ')} />
                   )}
 
@@ -127,11 +127,11 @@ export default function Header() {
                 <>
                   <Link
                     to="/board"
-                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-primary-700 hover:text-primary-500 dark:text-white/80 dark:hover:text-white'}`}
                   >
                     게시판
                   </Link>
-                  <span className={`text-sm ${solid ? 'text-primary-600 dark:text-gray-400' : 'text-white/70'}`}>
+                  <span className={`text-sm ${solid ? 'text-primary-600 dark:text-gray-400' : 'text-primary-600 dark:text-white/70'}`}>
                     {profile?.nickname || user.email?.split('@')[0]}
                   </span>
                   <button
@@ -145,7 +145,7 @@ export default function Header() {
                 <>
                   <Link
                     to="/board"
-                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-primary-700 hover:text-primary-500 dark:text-white/80 dark:hover:text-white'}`}
                   >
                     게시판
                   </Link>
@@ -165,9 +165,9 @@ export default function Header() {
               className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
               onClick={() => setMobileOpen(true)}
             >
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-primary-700 dark:bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-primary-700 dark:bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-primary-700 dark:bg-white'}`} />
             </button>
           </div>
         </div>
