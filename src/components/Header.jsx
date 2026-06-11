@@ -99,7 +99,7 @@ export default function Header() {
 
                   {/* 드롭다운 — 해당 nav 항목 바로 아래 */}
                   {hovered === item.label && (
-                    <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1">
+                    <div className="absolute left-0 top-full z-50 pt-1">
                       <ul className="min-w-[10rem] overflow-hidden rounded-xl border border-neutral-100 bg-white py-1.5 shadow-lg dark:border-deep-700 dark:bg-deep-800">
                         {item.children.map(c => (
                           <li key={c.label}>
