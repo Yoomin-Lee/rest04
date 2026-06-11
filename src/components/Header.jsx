@@ -78,7 +78,7 @@ export default function Header() {
                   <Link
                     to={item.to}
                     className={[
-                      'px-5 py-5 text-[15px] font-bold transition',
+                      'pl-0 pr-5 py-5 text-[15px] font-bold transition',
                       active
                         ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-primary-600 dark:text-white'
                         : solid
@@ -92,7 +92,7 @@ export default function Header() {
                   {/* active 밑줄 */}
                   {active && (
                     <span className={[
-                      'absolute bottom-0 left-5 right-5 h-0.5 rounded-full',
+                      'absolute bottom-0 left-0 right-5 h-0.5 rounded-full',
                       solid ? 'bg-primary-600 dark:bg-primary-400' : 'bg-primary-600 dark:bg-white',
                     ].join(' ')} />
                   )}
@@ -105,7 +105,7 @@ export default function Header() {
                           <li key={c.label}>
                             <Link
                               to={c.to}
-                              className="block whitespace-nowrap px-5 py-2.5 text-sm text-neutral-600 transition hover:bg-primary-50 hover:text-primary-600 dark:text-primary-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
+                              className="block whitespace-nowrap px-4 py-2.5 text-sm text-neutral-600 transition hover:bg-primary-50 hover:text-primary-600 dark:text-primary-300 dark:hover:bg-primary-900/30 dark:hover:text-primary-400"
                             >
                               {c.label}
                             </Link>
