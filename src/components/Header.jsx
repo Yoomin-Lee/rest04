@@ -82,7 +82,7 @@ export default function Header() {
                       active
                         ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-white'
                         : solid
-                          ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300 dark:hover:text-primary-400'
+                          ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300 dark:hover:text-primary-400'
                           : 'text-white/80 hover:text-white',
                     ].join(' ')}
                   >
@@ -127,16 +127,16 @@ export default function Header() {
                 <>
                   <Link
                     to="/board"
-                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
                   >
                     게시판
                   </Link>
-                  <span className={`text-sm ${solid ? 'text-neutral-500 dark:text-gray-400' : 'text-white/70'}`}>
+                  <span className={`text-sm ${solid ? 'text-primary-600 dark:text-gray-400' : 'text-white/70'}`}>
                     {profile?.nickname || user.email?.split('@')[0]}
                   </span>
                   <button
                     onClick={handleSignOut}
-                    className="text-sm px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 transition"
+                    className="text-sm px-3 py-1.5 rounded-lg bg-primary-50 dark:bg-gray-700 hover:bg-primary-100 dark:hover:bg-gray-600 text-primary-700 dark:text-gray-300 transition"
                   >
                     로그아웃
                   </button>
@@ -145,7 +145,7 @@ export default function Header() {
                 <>
                   <Link
                     to="/board"
-                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-neutral-600 hover:text-primary-600 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
+                    className={`text-sm font-medium px-3 py-1.5 rounded-lg transition ${solid ? 'text-primary-700 hover:text-primary-500 dark:text-primary-300' : 'text-white/80 hover:text-white'}`}
                   >
                     게시판
                   </Link>
@@ -165,9 +165,9 @@ export default function Header() {
               className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
               onClick={() => setMobileOpen(true)}
             >
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
-              <span className={`h-0.5 w-6 transition ${solid ? 'bg-neutral-800 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
+              <span className={`h-0.5 w-6 transition ${solid ? 'bg-primary-700 dark:bg-white' : 'bg-white'}`} />
             </button>
           </div>
         </div>
