@@ -78,7 +78,7 @@ export default function Header() {
                   <Link
                     to={item.to}
                     className={[
-                      'pl-0 pr-5 py-5 text-[15px] font-bold transition',
+                      'px-4 py-5 text-[15px] font-bold transition',
                       active
                         ? solid ? 'text-primary-600 dark:text-primary-400' : 'text-primary-600 dark:text-white'
                         : solid
@@ -92,7 +92,7 @@ export default function Header() {
                   {/* active 밑줄 */}
                   {active && (
                     <span className={[
-                      'absolute bottom-0 left-0 right-5 h-0.5 rounded-full',
+                      'absolute bottom-0 left-4 right-4 h-0.5 rounded-full',
                       solid ? 'bg-primary-600 dark:bg-primary-400' : 'bg-primary-600 dark:bg-white',
                     ].join(' ')} />
                   )}
